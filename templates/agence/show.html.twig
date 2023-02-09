@@ -1,0 +1,66 @@
+{% extends 'page.html.twig' %}
+
+{% block title %}Agence{% endblock %}
+
+{% block body %}
+<div class="container-fluid bg-white mt-4">
+    <h4>Agence</h4>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ agence.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ agence.nom }}</td>
+            </tr>
+            <tr>
+                <th>IdLocpro</th>
+                <td>{{ agence.idLocpro }}</td>
+            </tr>
+<tr>
+     <th>Type</th>
+<td>
+                            {% for type in agence.type %}
+                 {% if type == 'Agence propre' %}
+                    <span class="badge bg-success">{{ type }}</span>
+                                            {% elseif type == 'Franchise' %}
+                            <span class="badge bg-warning">{{ type }}</span>
+                        {% endif %}
+                {% endfor %}
+
+</td>
+            </tr>
+
+            <tr>
+                <th>Description</th>
+                <td>{{ agence.description|raw }}</td>
+            </tr>
+            <tr>
+                <th>Visuel</th>
+                <td>{{ agence.visuel }}</td>
+            </tr>
+            <tr>
+                <th>Localisation</th>
+                <td>{{ agence.localisation }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ agence.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Horaires</th>
+                <td>{{ agence.horaires }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_agence_index') }}">Retour</a>
+
+    <a href="{{ path('app_agence_edit', {'id': agence.id}) }}">Modifier</a>
+
+    {{ include('agence/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

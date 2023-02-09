@@ -1,0 +1,106 @@
+{% extends 'page.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid mt-4 py-4 bgHome">
+
+<div class="row mb-2">
+    <div class="col-md-3">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative  bg-white text-dark">
+        <div class="col p-4 d-flex flex-column position-static">
+
+          <h5 class="mb-0"><i class="fa fa-building"></i> AGENCES</h5>
+
+          <p class="card-text mb-auto">Gestion des agences BLACKSHEEP</p>
+          <a class="link-danger" href="/agence" class="stretched-link">Poursuivre <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+         {# <img src="/img/California-1-1.jpg" width="auto" height="300"/> #}
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white text-dark">
+        <div class="col p-4 d-flex flex-column position-static">
+
+          <h5 class="mb-0"><i class="fa fa-van-shuttle"></i> CAMPERVANS</h5>
+
+          <p class="mb-auto">Gestion du parc de Campervans</p>
+           <a class="link-danger" href="/campervan" class="stretched-link">Poursuivre <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          {# <img src="/img/California-1-1.jpg" width="auto" height="300"/> #}
+        </div>
+      </div>
+    </div>
+    <div class="row mb-2">
+    <div class="col-md-3">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white text-dark">
+        <div class="col p-4 d-flex flex-column position-static">
+
+          <h5 class="mb-0"><i class="fa fa-newspaper"></i> CONTENUS</h5>
+
+          <p class="card-text mb-auto">Gestion des ressources (SEO, Pages...)</p>
+           <a class="link-danger" href="/content" class="stretched-link" >Poursuivre <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+      {# <img src="/img/California-1-1.jpg" width="auto" height="300"/> #}
+       </div>
+      </div>
+    </div>
+     {% if is_granted('ROLE_ADMIN') %}
+    <div class="col-md-3">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white text-dark">
+        <div class="col p-4 d-flex flex-column position-static">
+
+          <h5 class="mb-0"><i class="fa fa-user"></i> UTILISATEURS</h5>
+
+          <p class="mb-auto">Gestion des utilisateurs de la plateforme</p>
+           <a class="link-danger" href="/user" class="stretched-link">Poursuivre <i class="fa fa-arrow-right"></i> </a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+         {# <img src="/img/California-1-1.jpg" width="auto" height="300"/> #}
+        </div>
+      </div>
+    </div>
+  </div>
+  {# if user role == admin #}
+
+  <div class="row mb-2">
+    <div class="col-md-3">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white text-dark">
+        <div class="col p-4 d-flex flex-column position-static">
+
+          <h5 class="mb-0"><i class="fa fa-desktop"></i> API</h5>
+
+          <p class="card-text mb-auto">Accès API Restful</p>
+           <a class="link-danger" href="/api" class="stretched-linwidth="200" height="250"k">Poursuivre <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+      {# <img src="/img/California-1-1.jpg" width="auto" height="300"/> #}
+       </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+{% endif %}
+{# link to agence page #}
+    {# <h5>Gestion des Agences</h5>
+    <a href="{{ path('app_agence_index') }}">Voir</a>
+<hr/>
+        <h5>Gestion des Campervans</h5>
+    <a href="{{ path('app_campervan_index') }}">Voir</a>
+<hr/>
+
+        <h5>Gestion des Contenus</h5>
+    <a href="{{ path('app_campervan_index') }}">Voir</a>
+<hr/>
+
+
+        <h5>Gestion des Utilisateurs</h5>
+    <a href="{{ path('app_user_index') }}">Voir</a> #}
+</div>
+{% endblock %}

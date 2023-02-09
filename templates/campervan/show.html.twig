@@ -1,0 +1,50 @@
+{% extends 'page.html.twig' %}
+
+{% block title %}Campervan{% endblock %}
+
+{% block body %}
+    <h1>Campervan</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ campervan.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ campervan.nom }}</td>
+            </tr>
+            <tr>
+                <th>Modele</th>
+                <td>{{ campervan.modele }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ campervan.description|raw }}</td>
+            </tr>
+            <tr>
+                <th>Options</th>
+                <td>{{ campervan.options ? campervan.options|join(', ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>VisiteVirtuelle</th>
+                <td>{{ campervan.visiteVirtuelle }}</td>
+            </tr>
+            <tr>
+                <th>Visuel</th>
+                <td>{{ campervan.visuel }}</td>
+            </tr>
+            <tr>
+                <th>LienDescriptif</th>
+                <td>{{ campervan.lienDescriptif }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_campervan_index') }}">Retour</a>
+
+    <a href="{{ path('app_campervan_edit', {'id': campervan.id}) }}">edit</a>
+
+    {{ include('campervan/_delete_form.html.twig') }}
+{% endblock %}

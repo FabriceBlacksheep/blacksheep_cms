@@ -1,0 +1,11 @@
+{% extends 'page.html.twig' %}
+
+{% block title %}New Campervan{% endblock %}
+
+{% block body %}
+    <h1>Créer Campervan</h1>
+
+    {{ include('campervan/_form.html.twig') }}
+
+    <a href="{{ path('app_campervan_index') }}">Retour</a>
+{% endblock %}

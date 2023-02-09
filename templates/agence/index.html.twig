@@ -1,0 +1,70 @@
+{% extends 'page.html.twig' %}
+
+{% block title %}Agence index{% endblock %}
+
+{% block body %}
+<div class="container-fluid my-4 py-4 bg-white">
+    <h4>Gestion des Agences</h4>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>IdLocpro</th>
+{# type #}
+                <th>Type</th>
+                <th>Description</th>
+                <th>Visuel</th>
+                <th>Localisation</th>
+                <th>Telephone</th>
+                <th>Horaires</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for agence in agences %}
+            <tr>
+                <td>{{ agence.id }}</td>
+                <td>{{ agence.nom }}</td>
+                <td>{{ agence.idLocpro }}</td>
+{# type #}
+                <td>
+
+                {% for type in agence.type %}
+                 {% if type == 'Agence propre' %}
+                    <span class="badge bg-success">{{ type }}</span>
+                                            {% elseif type == 'Franchise' %}
+                            <span class="badge bg-warning">{{ type }}</span>
+                        {% endif %}
+                {% endfor %}
+
+
+
+
+
+                </td>
+                {# {# render html truncate at 100  #}
+                <td>{{ agence.description|striptags|slice(0, 50) }}</td>
+                {# {# render html  #}
+
+                <td>{{ agence.visuel }}</td>
+                <td>{{ agence.localisation }}</td>
+                <td>{{ agence.telephone }}</td>
+                <td>{{ agence.horaires }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('app_agence_show', {'id': agence.id}) }}"><i class="fa fa-eye"></i> Voir</a>
+                    <a class="btn btn-warning" href="{{ path('app_agence_edit', {'id': agence.id}) }}"><i class="fa fa-pen"></i> Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">Aucune agence :(</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary" href="{{ path('app_agence_new') }}">Créer</a>
+    </div>
+{% endblock %}
