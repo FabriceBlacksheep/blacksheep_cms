@@ -29,6 +29,29 @@ class CampervanController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // uploaded file
+            $file = $form->get('visuel')->getData();
+
+            // generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+
+            // move the file to the directory where brochures are stored
+            $file->move(
+                $this->getParameter('kernel.project_dir').'/public/upload',
+                $fileName
+            );
+
+            // updates the 'brochureFilename' property to store the PDF file name
+
+            // instead of its contents
+            $campervan->setVisuel($fileName);
+
+
+
+
+
+
             $campervanRepository->save($campervan, true);
 
             return $this->redirectToRoute('app_campervan_index', [], Response::HTTP_SEE_OTHER);
@@ -55,6 +78,33 @@ class CampervanController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+ // check if a file already exists for this entity and upload form is empty
+ if ($campervan->getVisuel() && !$form->get('visuel')->getData()) {
+    // set the old file name
+    $campervan->setVisuel($campervan->getVisuel());
+} else {
+    // uploaded file
+    $file = $form->get('visuel')->getData();
+    // dd($file);
+    // generate a unique name for the file before saving it
+    $fileName = md5(uniqid()).'.'.$file->guessExtension();
+    // dd($fileName);
+    // move the file to the directory where brochures are stored
+    $file->move(
+        $this->getParameter('kernel.project_dir').'/public/upload',
+        $fileName
+    );
+    // updates the 'brochureFilename' property to store the PDF file name
+    // instead of its contents
+    $campervan->setVisuel($fileName);
+}
+
+
+
+
+
             $campervanRepository->save($campervan, true);
 
             return $this->redirectToRoute('app_campervan_index', [], Response::HTTP_SEE_OTHER);

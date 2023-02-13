@@ -8,21 +8,61 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\Dropzone\Form\DropzoneType;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+// FileType
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class CampervanType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
+            ->add('nom',null,[
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
             // idLocpro is a foreign key
-            ->add('idLocpro')
-            ->add('modele')
+            ->add('idLocpro',null,[
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            ->add('modele',null,[
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
             ->add('description',CKEditorType::class)
-            ->add('options')
-            ->add('visiteVirtuelle')
-            ->add('visuel', DropzoneType::class, array('data_class' => null))
-            ->add('lienDescriptif')
+            ->add('options',null,[
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            ->add('visiteVirtuelle',null,[
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            // visuel file
+
+                        // add visuel FileType
+                        ->add('visuel', FileType::class, [
+                            'data_class' => null,
+                            'mapped' => false,
+                            'required' => false,
+                            'label' => 'Visuel',
+                            'attr' => [
+                                'class' => 'form-control',
+                            ],
+                        ])
+
+
+            // ->add('visuel', DropzoneType::class, array('data_class' => null))
+            ->add('lienDescriptif',null,[
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
         ;
     }
 

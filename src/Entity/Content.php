@@ -2,6 +2,11 @@
 
 namespace App\Entity;
 
+// entity category
+
+use App\Entity\Category;
+
+
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ContentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -36,9 +41,13 @@ class Content
     #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'relation')]
     private Collection $content;
 
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'contents')]
+    private Collection $categories;
+
     public function __construct()
     {
         $this->content = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -133,10 +142,49 @@ class Content
         return $this;
     }
 
-    public function __toString()
-    {
-        // access to the category title
-        return $this->category->getTitle();
+    // public function __toString()
+    // {
+    //     // access to the category title
+    //     return $this->category->getTitle();
 
+    // }
+
+    // // return category from Content
+    // public function getCategory(): Category
+    // {
+    //     return $this->category;
+    // }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
     }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+
+// // public funnction to return the category by content
+
+//     public function getCategoryByContent(): Category
+//     {
+//         return $this->category;
+//     }
+
 }

@@ -3,13 +3,14 @@
 {% block title %}Edit Content{% endblock %}
 
 {% block body %}
-<div class="container-fluid bg-white mt-4">
-    <h1>Edit Content</h1>
+<div class="container bg-white mt-4 p-4">
+    <h4>Edition du contenu</h4>
 
-    {{ include('content/_form.html.twig', {'button_label': 'Update'}) }}
+    <a href="{{ path('app_content_index') }}" class="btn btn-primary btn-sm mb-2">Retour</a>
+        {{ include('content/_delete_form.html.twig') }}
+    {# form #}
 
-    <a href="{{ path('app_content_index') }}">back to list</a>
 
-    {{ include('content/_delete_form.html.twig') }}
+    {{ include('content/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
     </div>
 {% endblock %}

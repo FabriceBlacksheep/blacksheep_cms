@@ -1,10 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'page.html.twig' %}
 
 {% block title %}Category{% endblock %}
 
 {% block body %}
-    <h1>Category</h1>
+<div class="container bg-white mt-4 p-4">
 
+    <h4>Catégories</h4>
+
+    <a class="btn btn-sm btn-secondary" href="{{ path('app_category_index') }}">Retour</a>
+        {{ include('category/_delete_form.html.twig') }}
     <table class="table">
         <tbody>
             <tr>
@@ -18,9 +22,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_category_index') }}">back to list</a>
-
-    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
-
-    {{ include('category/_delete_form.html.twig') }}
+ <a class="btn btn-sm btn-success" href="{{ path('app_category_edit', {'id': category.id}) }}">Modifier</a>
 {% endblock %}

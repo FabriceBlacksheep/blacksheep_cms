@@ -3,11 +3,18 @@
 {% block title %}New Agence{% endblock %}
 
 {% block body %}
-<div class="container-fluid bg-white mt-4">
+<div class="container bg-white mt-4 p-4">
     <h4>Créer une Agence</h4>
+        <a class="btn btn-secondary btn-sm" href="{{ path('app_agence_index') }}">Retour</a>
+<div class="row g-3 align-items-center">
+<div class="col-12">
+
 
     {{ include('agence/_form.html.twig') }}
 
-    <a href="{{ path('app_agence_index') }}">Retour</a>
+
+</div>
+</div>
+
 </div>
 {% endblock %}

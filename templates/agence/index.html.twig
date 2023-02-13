@@ -3,7 +3,7 @@
 {% block title %}Agence index{% endblock %}
 
 {% block body %}
-<div class="container-fluid my-4 py-4 bg-white">
+<div class="container-fluid my-4 p-4 bg-white">
     <h4>Gestion des Agences</h4>
 
     <table class="table">
@@ -14,12 +14,12 @@
                 <th>IdLocpro</th>
 {# type #}
                 <th>Type</th>
-                <th>Description</th>
+                {# <th>Description</th> #}
                 <th>Visuel</th>
                 <th>Localisation</th>
                 <th>Telephone</th>
                 <th>Horaires</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -39,22 +39,33 @@
                         {% endif %}
                 {% endfor %}
 
+                </td>
+
+                {# <td>{{ agence.description|striptags|slice(0, 50) }}</td> #}
 
 
+                <td>
+
+                {# Twig condition if agence.visuel exists #}
+                {% if agence.visuel %}
+                    <img src="{{ asset('upload/' ~ agence.visuel) }}" alt="agence.visuel" width="50px"/>
+                {% else %}
+                    Aucun visuel
+                {% endif %}
+
+                {# <img src="{{ asset('upload/' ~ agence.visuel) }}" alt="agence.visuel" width="50px"/> #}
 
 
                 </td>
-                {# {# render html truncate at 100  #}
-                <td>{{ agence.description|striptags|slice(0, 50) }}</td>
-                {# {# render html  #}
 
-                <td>{{ agence.visuel }}</td>
                 <td>{{ agence.localisation }}</td>
                 <td>{{ agence.telephone }}</td>
                 <td>{{ agence.horaires }}</td>
                 <td>
-                    <a class="btn btn-success" href="{{ path('app_agence_show', {'id': agence.id}) }}"><i class="fa fa-eye"></i> Voir</a>
-                    <a class="btn btn-warning" href="{{ path('app_agence_edit', {'id': agence.id}) }}"><i class="fa fa-pen"></i> Modifier</a>
+                    <a class="btn btn-success" href="{{ path('app_agence_show', {'id': agence.id}) }}"><i class="fa fa-eye"></i></a>
+                    <a class="btn btn-warning" href="{{ path('app_agence_edit', {'id': agence.id}) }}"><i class="fa fa-pen"></i></a>
+                    {# delete #}
+
                 </td>
             </tr>
         {% else %}
@@ -65,6 +76,6 @@
         </tbody>
     </table>
 
-    <a class="btn btn-secondary" href="{{ path('app_agence_new') }}">Créer</a>
+    <a class="btn btn-secondary" href="{{ path('app_agence_new') }}">Créer une agence</a>
     </div>
 {% endblock %}

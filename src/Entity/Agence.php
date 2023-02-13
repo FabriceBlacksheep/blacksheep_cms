@@ -8,15 +8,24 @@ use Doctrine\ORM\Mapping as ORM;
 // Api Platform
 use ApiPlatform\Metadata\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
+
+
+// vich uploader
+
 
 #[ORM\Entity(repositoryClass: AgenceRepository::class)]
 // Api Platform
 #[ApiResource]
+
+
+
 class Agence
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
@@ -29,13 +38,16 @@ class Agence
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
+    // authorize value null
+
     private ?string $visuel = null;
+
 
     #[ORM\Column(length: 255)]
     private ?string $localisation = null;
 
     #[ORM\Column]
-    private ?int $telephone = null;
+    private ?string $telephone = null;
 
     #[ORM\Column(length: 255)]
     private ?string $horaires = null;
@@ -109,12 +121,12 @@ class Agence
         return $this;
     }
 
-    public function getTelephone(): ?int
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
-    public function setTelephone(int $telephone): self
+    public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
 

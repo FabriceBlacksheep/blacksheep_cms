@@ -91,4 +91,51 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+    // Route email to user to reset password
+    #[Route('/reset-password/{token}', name: 'app_user_reset_password')]
+
+    // Method to reset password
+    public function resetPassword($token, Request $request, UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher): Response
+    {
+        // Find user by token
+        $user = $userRepository->findOneBy(['resetToken' => $token]);
+
+        // If user is found
+        if($user) {
+
+            // If form is submitted
+            if($request->isMethod('POST')) {
+
+                // Encode password
+                $user->setPassword(
+                    $userPasswordHasher->hashPassword(
+                        $user,
+                        $request->request->get('password')
+                    )
+                );
+
+                // Remove token
+                $user->setResetToken(null);
+
+                // Save user
+                $userRepository->save($user, true);
+
+                // Redirect to login page
+                return $this->redirectToRoute('app_login');
+            } else {
+
+                // Render reset password form
+                return $this->render('user/reset_password.html.twig', [
+                    'token' => $token
+                ]);
+            }
+        } else {
+
+            // If user is not found, redirect to login page
+            return $this->redirectToRoute('app_login');
+        }
+    }
+
 }

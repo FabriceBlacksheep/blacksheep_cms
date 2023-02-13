@@ -3,13 +3,18 @@
 {% block title %}New Content{% endblock %}
 
 {% block body %}
-<div class="container-fluid bg-white mt-4">
-    <h1>Create new Content</h1>
+<div class="container bg-white mt-4 p-4">
+    <h4>Créer un contenu</h4>
+        <a class="btn btn-secondary btn-sm" href="{{ path('app_content_index') }}">Retour</a>
+<div class="row g-3 align-items-center">
+<div class="col-12">
+
 
     {{ include('content/_form.html.twig') }}
-    {# include category form #}
-    {# {{ include('category/_form.html.twig') }} #}
 
-    <a href="{{ path('app_content_index') }}">back to list</a>
-    </div>
+
+</div>
+</div>
+
+</div>
 {% endblock %}

@@ -39,6 +39,30 @@ class ContentRepository extends ServiceEntityRepository
         }
     }
 
+
+    // function to return all categories of a content
+    public function findCategory(Content $content): array
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb->select('c.category');
+        $qb->distinct();
+        $qb->where('c.id = :id');
+        $qb->setParameter('id', $content->getId());
+
+        return $qb->getQuery()->getResult();
+    }
+
+
+
+    // public function findCategory(): array
+    // {
+    //     $qb = $this->createQueryBuilder('c');
+    //     $qb->select('c.category');
+    //     $qb->distinct();
+
+    //     return $qb->getQuery()->getResult();
+    // }
+
 //    /**
 //     * @return Content[] Returns an array of Content objects
 //     */

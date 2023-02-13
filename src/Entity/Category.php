@@ -23,9 +23,13 @@ class Category
     #[ORM\ManyToMany(targetEntity: Content::class, inversedBy: 'content')]
     private Collection $relation;
 
+    #[ORM\ManyToMany(targetEntity: Content::class, mappedBy: 'categories')]
+    private Collection $contents;
+
     public function __construct()
     {
         $this->relation = new ArrayCollection();
+        $this->contents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -65,6 +69,33 @@ class Category
     public function removeRelation(Content $relation): self
     {
         $this->relation->removeElement($relation);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Content>
+     */
+    public function getContents(): Collection
+    {
+        return $this->contents;
+    }
+
+    public function addContent(Content $content): self
+    {
+        if (!$this->contents->contains($content)) {
+            $this->contents->add($content);
+            $content->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContent(Content $content): self
+    {
+        if ($this->contents->removeElement($content)) {
+            $content->removeCategory($this);
+        }
 
         return $this;
     }

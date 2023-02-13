@@ -3,14 +3,14 @@
 namespace App\Form;
 
 use App\Entity\Content;
-// category entity
-use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-
+// FileType
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 
 class ContentType extends AbstractType
 {
@@ -18,17 +18,51 @@ class ContentType extends AbstractType
     {
         // build form for content entity with category choice
         $builder
-            ->add('title')
-            ->add('description')
-            ->add('h1')
-            ->add('slug')
+            ->add('title',null, [
+                'required' => true,
+                'label' => 'Titre',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            ->add('description',CKEditorType::class)
+            ->add('h1',null, [
+                'required' => true,
+                'label' => 'H1',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            ->add('slug',null, [
+                'required' => true,
+                'label' => 'Slug',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            // category choice
+            ->add('categories', EntityType::class, [
+                'class' => 'App\Entity\Category',
+                'choice_label' => 'title',
+                'multiple' => true,
+                'expanded' => true,
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
 
-            // add category choice
 
-
-            ->add('visuel');
-
-
+                       // add visuel FileType
+                       ->add('visuel', FileType::class, [
+                        'data_class' => null,
+                        'mapped' => false,
+                        'required' => false,
+                        'label' => 'Visuel',
+                        'attr' => [
+                            'class' => 'form-control',
+                        ],
+                    ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

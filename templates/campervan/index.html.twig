@@ -37,11 +37,11 @@
                   <td class=" max-w-[50%]">{{ campervan.description|striptags|slice(0, 50) }}</td>
                   <td class="">{{ campervan.options ? campervan.options|join(', ') : '' }}</td>
                   <td class="">{{ campervan.visiteVirtuelle }}</td>
-                  <td class="">{{ campervan.visuel }}</td>
+                  <td class=""><img src="/upload/{{ campervan.visuel }}" width="100px"/></td>
                   <td class="">{{ campervan.lienDescriptif }}</td>
                   <td class="">
-                    <a class="btn btn-success" href="{{ path('app_campervan_show', {'id': campervan.id}) }}">Voir</a>
-                    <a class="btn btn-warning"href="{{ path('app_campervan_edit', {'id': campervan.id}) }}">Modifier</a>
+                    <a class="btn btn-success" href="{{ path('app_campervan_show', {'id': campervan.id}) }}"><i class="fa fa-eye"></i></a>
+                    <a class="btn btn-warning"href="{{ path('app_campervan_edit', {'id': campervan.id}) }}"><i class="fa fa-pen"></i></a>
                 </td>
             </tr>
         {% else %}
