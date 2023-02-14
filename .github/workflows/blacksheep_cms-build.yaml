@@ -1,0 +1,54 @@
+# To better understand this file read this:
+# https://docs.ionos.space/docs/github-actions-customization/
+
+name: "Deploy Now: Execute Build"
+
+on:
+  workflow_call:
+    inputs:
+      site-url:
+        required: true
+        type: string
+      branch-id:
+        required: true
+        type: string
+
+env:
+  DEPLOYMENT_FOLDER: ./
+
+jobs:
+# Please do not rename this job
+  build-project:
+    name: build blacksheep_cms
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      # if you add permissions here this needs to be done in the blacksheep_cms-orchestration.yaml as well
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+
+      - name: Setup composer
+        uses: php-actions/composer@v6
+        env:
+          DATABASE_URL: "mysql://dbu2858755:Ps14087940!@db5011940293.hosting-data.io:3306/bs_cms?serverVersion=mariadb-10.5.8"
+        with:
+          php_version: '8.0'
+          version: '2'
+          args: --ignore-platform-req=ext-zip
+
+# Please do not touch the following action
+      - name: Store deployment content
+        uses: ionos-deploy-now/artifact-action@v1
+        with:
+          api-key: ${{ secrets.IONOS_API_KEY }}
+          service-host: api-eu.ionos.space
+          project-id: 3e65ba82-9e27-4ab3-88c9-259b81cbbc57
+          branch-id: ${{ inputs.branch-id }}
+          version: ${{ github.sha }}
+          folder: ${{ env.DEPLOYMENT_FOLDER }}
+          config-file: .deploy-now/blacksheep_cms/config.yaml
+          action: upload
