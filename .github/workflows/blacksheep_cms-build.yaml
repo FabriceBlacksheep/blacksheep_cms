@@ -42,7 +42,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: v16.13.0
+          node-version: v16.x
 
       - name: Build Node assets
         env:
@@ -50,10 +50,8 @@ jobs:
           SITE_URL: ${{ inputs.site-url }}
         run: |
           npm install --global yarn
-          npm install --force 
-          npm run build
-          yarn install --force
-          yarn watch
+          yarn install --frozen-lockfile
+          yarn build
 
       - name: Setup composer
         uses: php-actions/composer@v6
@@ -72,7 +70,7 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-eu.ionos.space
-          project-id: 8783713c-e1cc-4803-9a05-13679adcb293
+          project-id: 22c06f5e-419e-40f7-b47c-52f8f65131c3
           branch-id: ${{ inputs.branch-id }}
           version: ${{ github.sha }}
           folder: ${{ env.DEPLOYMENT_FOLDER }}
