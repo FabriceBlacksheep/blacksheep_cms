@@ -33,6 +33,28 @@ class CampervanType extends AbstractType
                 ],
             ])
             ->add('description',CKEditorType::class)
+            ->add('description_EN',CKEditorType::class
+            , [
+                'label' => 'Déscription ANGLAISE',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ]
+            )
+            ->add('description_DE',CKEditorType::class, [
+                'label' => 'Déscription ALLEMANDE',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ]
+            )
+            ->add('description_NL',CKEditorType::class, [
+                'label' => 'Déscription NÉERLANDAISE',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ]
+            )
             ->add('options',null,[
                 'attr' => [
                     'class' => 'form-control',

@@ -3,6 +3,18 @@
 {% block title %}New Content{% endblock %}
 
 {% block body %}
+<style>
+input{
+        margin-bottom: 10px;
+
+}
+
+label{
+    margin-top:10px
+}
+
+
+</style>
 <div class="container bg-white mt-4 p-4">
     <h4>Créer un contenu</h4>
         <a class="btn btn-secondary btn-sm" href="{{ path('app_content_index') }}">Retour</a>
@@ -11,6 +23,15 @@
 
 
     {{ include('content/_form.html.twig') }}
+
+    {# {{ form_start(form, {'method': 'POST'}) }}
+
+
+    {# Form end #}
+
+
+
+    {# {{ form_widget(form.content, {'attr': {'class': 'title'}}) }} #}
 
 
 </div>

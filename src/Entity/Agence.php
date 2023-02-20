@@ -55,6 +55,31 @@ class Agence
     #[ORM\Column]
     private array $type = [];
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description_EN = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description_NL = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description_DE = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $nom_DE = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $nom_EN = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $nom_NL = null;
+
+    #[ORM\Column]
+    private ?bool $active = null;
+
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $email = null;
+
 
     public function getId(): ?int
     {
@@ -153,6 +178,102 @@ class Agence
     public function setType(array $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getDescriptionEN(): ?string
+    {
+        return $this->description_EN;
+    }
+
+    public function setDescriptionEN(?string $description_EN): self
+    {
+        $this->description_EN = $description_EN;
+
+        return $this;
+    }
+
+    public function getDescriptionNL(): ?string
+    {
+        return $this->description_NL;
+    }
+
+    public function setDescriptionNL(?string $description_NL): self
+    {
+        $this->description_NL = $description_NL;
+
+        return $this;
+    }
+
+    public function getDescriptionDE(): ?string
+    {
+        return $this->description_DE;
+    }
+
+    public function setDescriptionDE(?string $description_DE): self
+    {
+        $this->description_DE = $description_DE;
+
+        return $this;
+    }
+
+    public function getNomDE(): ?string
+    {
+        return $this->nom_DE;
+    }
+
+    public function setNomDE(?string $nom_DE): self
+    {
+        $this->nom_DE = $nom_DE;
+
+        return $this;
+    }
+
+    public function getNomEN(): ?string
+    {
+        return $this->nom_EN;
+    }
+
+    public function setNomEN(?string $nom_EN): self
+    {
+        $this->nom_EN = $nom_EN;
+
+        return $this;
+    }
+
+    public function getNomNL(): ?string
+    {
+        return $this->nom_NL;
+    }
+
+    public function setNomNL(?string $nom_NL): self
+    {
+        $this->nom_NL = $nom_NL;
+
+        return $this;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }

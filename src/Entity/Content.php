@@ -44,6 +44,42 @@ class Content
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'contents')]
     private Collection $categories;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $title_DE = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description_DE = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $h1_DE = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug_DE = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $title_EN = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description_EN = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $h1_EN = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug_EN = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $title_NL = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description_NL = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $h1_NL = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug_NL = null;
+
     public function __construct()
     {
         $this->content = new ArrayCollection();
@@ -186,5 +222,149 @@ class Content
 //     {
 //         return $this->category;
 //     }
+
+public function getTitleDE(): ?string
+{
+    return $this->title_DE;
+}
+
+public function setTitleDE(?string $title_DE): self
+{
+    $this->title_DE = $title_DE;
+
+    return $this;
+}
+
+public function getDescriptionDE(): ?string
+{
+    return $this->description_DE;
+}
+
+public function setDescriptionDE(?string $description_DE): self
+{
+    $this->description_DE = $description_DE;
+
+    return $this;
+}
+
+public function getH1DE(): ?string
+{
+    return $this->h1_DE;
+}
+
+public function setH1DE(?string $h1_DE): self
+{
+    $this->h1_DE = $h1_DE;
+
+    return $this;
+}
+
+public function getSlugDE(): ?string
+{
+    return $this->slug_DE;
+}
+
+public function setSlugDE(?string $slug_DE): self
+{
+    $this->slug_DE = $slug_DE;
+
+    return $this;
+}
+
+public function getTitleEN(): ?string
+{
+    return $this->title_EN;
+}
+
+public function setTitleEN(?string $title_EN): self
+{
+    $this->title_EN = $title_EN;
+
+    return $this;
+}
+
+public function getDescriptionEN(): ?string
+{
+    return $this->description_EN;
+}
+
+public function setDescriptionEN(?string $description_EN): self
+{
+    $this->description_EN = $description_EN;
+
+    return $this;
+}
+
+public function getH1EN(): ?string
+{
+    return $this->h1_EN;
+}
+
+public function setH1EN(?string $h1_EN): self
+{
+    $this->h1_EN = $h1_EN;
+
+    return $this;
+}
+
+public function getSlugEN(): ?string
+{
+    return $this->slug_EN;
+}
+
+public function setSlugEN(?string $slug_EN): self
+{
+    $this->slug_EN = $slug_EN;
+
+    return $this;
+}
+
+public function getTitleNL(): ?string
+{
+    return $this->title_NL;
+}
+
+public function setTitleNL(?string $title_NL): self
+{
+    $this->title_NL = $title_NL;
+
+    return $this;
+}
+
+public function getDescriptionNL(): ?string
+{
+    return $this->description_NL;
+}
+
+public function setDescriptionNL(?string $description_NL): self
+{
+    $this->description_NL = $description_NL;
+
+    return $this;
+}
+
+public function getH1NL(): ?string
+{
+    return $this->h1_NL;
+}
+
+public function setH1NL(?string $h1_NL): self
+{
+    $this->h1_NL = $h1_NL;
+
+    return $this;
+}
+
+public function getSlugNL(): ?string
+{
+    return $this->slug_NL;
+}
+
+public function setSlugNL(?string $slug_NL): self
+{
+    $this->slug_NL = $slug_NL;
+
+    return $this;
+}
 
 }

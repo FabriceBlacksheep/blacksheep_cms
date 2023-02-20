@@ -9,13 +9,14 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Statut</th>
                 <th>Nom</th>
                 <th>IdLocpro</th>
 {# type #}
                 <th>Type</th>
                 {# <th>Description</th> #}
                 <th>Visuel</th>
+                <th>Email</th>
                 <th>Localisation</th>
                 <th>Telephone</th>
                 <th>Horaires</th>
@@ -25,7 +26,16 @@
         <tbody>
         {% for agence in agences %}
             <tr>
-                <td>{{ agence.id }}</td>
+                <td>
+
+                {% if agence.active == 0 %}
+                    <span class="badge bg-success">ACTIVE</span>
+                {% else %}
+                    <span class="badge bg-danger">INACTIVE</span>
+                {% endif %}
+
+
+                </td>
                 <td>{{ agence.nom }}</td>
                 <td>{{ agence.idLocpro }}</td>
 {# type #}
@@ -58,12 +68,15 @@
 
                 </td>
 
+                <td>{{ agence.email }}</td>
+
                 <td>{{ agence.localisation }}</td>
                 <td>{{ agence.telephone }}</td>
                 <td>{{ agence.horaires }}</td>
                 <td>
                     <a class="btn btn-success" href="{{ path('app_agence_show', {'id': agence.id}) }}"><i class="fa fa-eye"></i></a>
                     <a class="btn btn-warning" href="{{ path('app_agence_edit', {'id': agence.id}) }}"><i class="fa fa-pen"></i></a>
+
                     {# delete #}
 
                 </td>

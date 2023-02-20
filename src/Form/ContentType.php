@@ -25,7 +25,57 @@ class ContentType extends AbstractType
                     'class' => 'form-control',
                 ],
             ])
-            ->add('description',CKEditorType::class)
+            ->add('title_EN',null, [
+                'required' => false,
+                'label' => 'Titre ANGLAIS',
+                'attr' => [
+                    'class' => 'form-control col-3',
+                ],
+            ])
+            ->add('title_DE',null, [
+                'required' => false,
+                'label' => 'Titre ALLEMAND',
+                'attr' => [
+                    'class' => 'form-control col-3',
+                ],
+            ])
+            ->add('title_NL',null, [
+                'required' => false,
+                'label' => 'Titre NÉERLANDAIS',
+                'attr' => [
+                    'class' => 'form-control col-3',
+                ],
+            ])
+            ->add('description',CKEditorType::class
+            , [
+                'label' => 'Déscription',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ]
+            )
+            ->add('description_EN',CKEditorType::class
+            , [
+                'label' => 'Déscription ANGLAISE',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ]
+            )
+            ->add('description_DE',CKEditorType::class, [
+                'label' => 'Déscription ALLEMANDE',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ]
+            )
+            ->add('description_NL',CKEditorType::class, [
+                'label' => 'Déscription NÉERLANDAISE',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ]
+            )
             ->add('h1',null, [
                 'required' => true,
                 'label' => 'H1',
@@ -33,9 +83,51 @@ class ContentType extends AbstractType
                     'class' => 'form-control',
                 ],
             ])
+            ->add('h1_EN',null, [
+                'required' => true,
+                'label' => 'H1 ANGLAIS',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            ->add('h1_DE',null, [
+                'required' => true,
+                'label' => 'H1 ALLEMAND',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            ->add('h1_NL',null, [
+                'required' => true,
+                'label' => 'H1 NÉERLANDAIS',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
             ->add('slug',null, [
                 'required' => true,
                 'label' => 'Slug',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            ->add('slug_EN',null, [
+                'required' => true,
+                'label' => 'Slug ANGLAIS',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            ->add('slug_DE',null, [
+                'required' => true,
+                'label' => 'Slug ALLEMAND',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            ->add('slug_NL',null, [
+                'required' => true,
+                'label' => 'Slug NÉERLANDAIS',
                 'attr' => [
                     'class' => 'form-control',
                 ],

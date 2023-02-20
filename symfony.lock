@@ -12,6 +12,15 @@
             "./src/ApiResource/.gitignore"
         ]
     },
+    "arkounay/ux-collection": {
+        "version": "3.2.0"
+    },
+    "arkounay/ux-media": {
+        "version": "3.2.1"
+    },
+    "artgris/filemanager-bundle": {
+        "version": "2.5.2"
+    },
     "doctrine/annotations": {
         "version": "1.14",
         "recipe": {
@@ -109,6 +118,18 @@
         },
         "files": [
             "./config/packages/sensio_framework_extra.yaml"
+        ]
+    },
+    "symfony/apache-pack": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "efb318193e48384eb5c5aadff15396ed698f8ffc"
+        },
+        "files": [
+            "./public/.htaccess"
         ]
     },
     "symfony/console": {

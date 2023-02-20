@@ -16,6 +16,10 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 // use Vich\UploaderBundle\Form\Type\VichImageType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+// textfield type
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
 class AgenceType extends AbstractType
@@ -30,11 +34,33 @@ class AgenceType extends AbstractType
                     'class' => 'form-control',
                 ],
             ])
+            ->add('nom_EN', null, [
+                'required' => false,
+                'label' => 'Nom Anglais',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            ->add('nom_NL', null, [
+                'required' => false,
+                'label' => 'Nom Néerlandais',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+            ->add('nom_DE', null, [
+                'required' => false,
+                'label' => 'Nom Allemand',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
             ->add('idLocpro', null, [
                 'required' => true,
                 'label' => 'ID Locpro',
                 'attr' => [
                     'class' => 'form-control',
+                    'placeholder' => 'Par exemple: AGBSLYON ou AGLI...',
                 ],
             ])
             // type agence
@@ -52,7 +78,46 @@ class AgenceType extends AbstractType
                 ],
             ])
 
-            ->add('description',CKEditorType::class)
+            // email
+
+            ->add('email', null, [
+                'required' => false,
+                'label' => 'Email',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+
+            ->add('description',CKEditorType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ]
+            )
+            ->add('description_EN',CKEditorType::class
+            , [
+                'label' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ]
+            )
+            ->add('description_DE',CKEditorType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ]
+            )
+            ->add('description_NL',CKEditorType::class, [
+                'label' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ]
+            )
+
 
 
             // add visuel FileType
@@ -68,28 +133,12 @@ class AgenceType extends AbstractType
 
 
 
-
-
-
-
-            // ->add('visuel', DropzoneType::class, [
-            //     // show uploaded file
-
-            //     'data_class' => null,
-            //     'label' => 'Visuel',
-            //     'attr' => [
-            //         'id' => 'dropzoneImg',
-            //         'class' => 'form-control',
-            //         'placeholder' => 'Glisser déposer ou cliquer pour ajouter une image',
-            //     ],
-            // ])
-
-
             ->add('localisation', null, [
                 'required' => true,
                 'label' => 'Localisation',
                 'attr' => [
                     'class' => 'form-control',
+                    'placeholder' => 'Lat: 48.856614, Long: 2.3522219',
                 ],
             ])
             ->add('telephone',null, [
@@ -97,15 +146,37 @@ class AgenceType extends AbstractType
                 'label' => 'Téléphone',
                 'attr' => [
                     'class' => 'form-control',
+                    'placeholder' => '+33661626364',
                 ],
             ])
-            ->add('horaires',null, [
+
+                // horaires datetype field
+            ->add('horaires', TextType::class, [
                 'required' => true,
                 'label' => 'Horaires',
                 'attr' => [
                     'class' => 'form-control',
+                    // placeholder
+                    'placeholder' => 'Lundi - Vendredi : 9h - 18h',
                 ],
             ])
+
+
+
+            // ->add('horaires',null, [
+            //     'required' => true,
+            //     'label' => 'Horaires',
+            //     'attr' => [
+            //         'class' => 'form-control',
+            //     ],
+            // ])
+
+
+
+
+
+
+
         ;
 
 

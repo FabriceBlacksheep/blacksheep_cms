@@ -14,7 +14,7 @@
           <h5 class="mb-0"><i class="fa fa-newspaper"></i> JOURNAL DE BORD</h5>
 
           <p class="card-text mb-auto py-4">
-
+          15/02/2022 : Implémentation gestion des langues pour les contenus<br>
           13/02/2022 : Mise en place de la page d'accueil du backoffice<br>
           12/02/2022 : API Rest
 
@@ -31,7 +31,7 @@
     </div>
 </div>
 <div class="row mb-2">
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative  bg-white text-dark">
         <div class="col p-4 d-flex flex-column position-static">
 
@@ -45,7 +45,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white text-dark">
         <div class="col p-4 d-flex flex-column position-static">
 
@@ -60,7 +60,7 @@
       </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white text-dark">
         <div class="col p-4 d-flex flex-column position-static">
 
@@ -73,12 +73,22 @@
       {# <img src="/img/California-1-1.jpg" width="auto" height="300"/> #}
        </div>
       </div>
-
-
-
 </div>
 
+    <div class="col-md-3">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white text-dark">
+        <div class="col p-4 d-flex flex-column position-static">
 
+          <h5 class="mb-0"><i class="fa fa-camera"></i> MEDIA</h5>
+
+          <p class="card-text mb-auto py-4">Gestion des médias (Images, PDF...)</p>
+           <a class="btnCustom btn btn-sm btn-success" href="/library" class="stretched-link" >Poursuivre <i class="fa fa-arrow-right"></i></a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+      {# <img src="/img/California-1-1.jpg" width="auto" height="300"/> #}
+       </div>
+      </div>
+</div>
 
 <div class="row mb-2">
 
@@ -99,6 +109,8 @@
 
 
 </div>
+
+
 
  {% if is_granted('ROLE_ADMIN') %}
     <div class="col-md-4">

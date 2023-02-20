@@ -45,9 +45,8 @@ class AgenceController extends AbstractController
             // updates the 'brochureFilename' property to store the PDF file name
             // instead of its contents
             $agence->setVisuel($fileName);
-
-
-
+            // set agence active to true
+            $agence->setActive(true);
 
             $agenceRepository->save($agence, true);
 
@@ -123,4 +122,20 @@ class AgenceController extends AbstractController
 
         return $this->redirectToRoute('app_agence_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+    // route to set active or inactive post method
+    #[Route('/{id}/active', name: 'app_agence_active', methods: ['POST'])]
+    public function active(Agence $agence, AgenceRepository $agenceRepository): Response
+    {
+        $agence->setActive(!$agence->isActive());
+        $agenceRepository->save($agence, true);
+
+        return $this->redirectToRoute('app_agence_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+
+
+
+
 }

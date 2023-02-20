@@ -44,6 +44,15 @@ class Campervan
     #[ORM\Column(length: 255)]
     private ?string $idLocpro = null;
 
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description_EN = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description_DE = null;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $description_NL = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -141,6 +150,42 @@ class Campervan
     public function setIdLocpro(string $idLocpro): self
     {
         $this->idLocpro = $idLocpro;
+
+        return $this;
+    }
+
+    public function getDescriptionEN(): ?string
+    {
+        return $this->description_EN;
+    }
+
+    public function setDescriptionEN(?string $description_EN): self
+    {
+        $this->description_EN = $description_EN;
+
+        return $this;
+    }
+
+    public function getDescriptionDE(): ?string
+    {
+        return $this->description_DE;
+    }
+
+    public function setDescriptionDE(?string $description_DE): self
+    {
+        $this->description_DE = $description_DE;
+
+        return $this;
+    }
+
+    public function getDescriptionNL(): ?string
+    {
+        return $this->description_NL;
+    }
+
+    public function setDescriptionNL(?string $description_NL): self
+    {
+        $this->description_NL = $description_NL;
 
         return $this;
     }

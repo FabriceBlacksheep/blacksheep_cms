@@ -14,6 +14,8 @@
             {{ encore_entry_script_tags('app') }}
             {# cdn dropzone #}
             <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js" integrity="sha512-U2WE1ktpMTuRBPoCFDzomoIorbOyUv0sP8B+INA3EzNAhehbzED1rOJg6bCqPf/Tuposxb5ja/MAUnC8THSbLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            {# bootstrap js #}
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
         {% endblock %}
     </head>
     <body class="">
@@ -34,7 +36,13 @@
                 <li class="nav-item">
           <a class="nav-link" href="/content">CONTENUS</a>
         </li>
-                <li class="nav-item">
+
+        <li class="nav-item">
+          <a class="nav-link" href="/library">MEDIA</a>
+        </li>
+
+
+         <li class="nav-item">
           <a class="nav-link" href="/user">UTILISATEURS</a>
         </li>
       </ul>
