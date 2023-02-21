@@ -3,8 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Agence;
+use App\Entity\Adresse;
+
 use App\Form\AgenceType;
+use App\Form\AdresseType;
 use App\Repository\AgenceRepository;
+use App\Repository\AdresseRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,12 +21,17 @@ class AgenceController extends AbstractController
     public function index(AgenceRepository $agenceRepository): Response
     {
         return $this->render('agence/index.html.twig', [
+
+
             'agences' => $agenceRepository->findAll(),
+
+
+
         ]);
     }
 
     #[Route('/new', name: 'app_agence_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, AgenceRepository $agenceRepository): Response
+    public function new(Request $request, AgenceRepository $agenceRepository, AdresseRepository $adresseRepository): Response
     {
         $agence = new Agence();
         $form = $this->createForm(AgenceType::class, $agence);
@@ -48,7 +57,19 @@ class AgenceController extends AbstractController
             // set agence active to true
             $agence->setActive(true);
 
+            // get adresse form
+            $adresse = $form->get('adresse')->getData();
+
+            // set agence adresse
+            $agence->setAdresse($adresse);
+
+
+
             $agenceRepository->save($agence, true);
+
+            // send flash message
+            $this->addFlash('success', 'Agence ajoutée avec succès');
+
 
             return $this->redirectToRoute('app_agence_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -70,6 +91,14 @@ class AgenceController extends AbstractController
     #[Route('/{id}/edit', name: 'app_agence_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Agence $agence, AgenceRepository $agenceRepository): Response
     {
+
+        // get agence adresse
+        $adresse = $agence->getAdresse();
+
+        // prefilled form
+
+
+
         $form = $this->createForm(AgenceType::class, $agence);
         $form->handleRequest($request);
 
@@ -96,9 +125,21 @@ class AgenceController extends AbstractController
                 // updates the 'brochureFilename' property to store the PDF file name
                 // instead of its contents
                 $agence->setVisuel($fileName);
+
+                   // get adresse form
+                $adresse = $form->get('adresse')->getData();
+
+            // set agence adresse
+                $agence->setAdresse($adresse);
+
+
+
             }
 
             $agenceRepository->save($agence, true);
+
+               // send flash message
+               $this->addFlash('warning', 'Agence modifiée avec succès');
 
             return $this->redirectToRoute('app_agence_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -120,6 +161,9 @@ class AgenceController extends AbstractController
             $agenceRepository->remove($agence, true);
         }
 
+        // send flash message
+        $this->addFlash('danger', 'Agence supprimée avec succès');
+
         return $this->redirectToRoute('app_agence_index', [], Response::HTTP_SEE_OTHER);
     }
 
@@ -130,6 +174,9 @@ class AgenceController extends AbstractController
     {
         $agence->setActive(!$agence->isActive());
         $agenceRepository->save($agence, true);
+
+            // send flash message
+            $this->addFlash('warning', 'Statut de l\'agence modifié avec succès');
 
         return $this->redirectToRoute('app_agence_index', [], Response::HTTP_SEE_OTHER);
     }

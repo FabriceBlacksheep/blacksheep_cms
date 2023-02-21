@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AssuranceRepository::class)]
 #[ApiResource]
+
 class Assurance
 {
     #[ORM\Id]

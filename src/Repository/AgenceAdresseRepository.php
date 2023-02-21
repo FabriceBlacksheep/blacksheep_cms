@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Agence;
+use App\Entity\AgenceAdresse;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Agence>
+ * @extends ServiceEntityRepository<AgenceAdresse>
  *
- * @method Agence|null find($id, $lockMode = null, $lockVersion = null)
- * @method Agence|null findOneBy(array $criteria, array $orderBy = null)
- * @method Agence[]    findAll()
- * @method Agence[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method AgenceAdresse|null find($id, $lockMode = null, $lockVersion = null)
+ * @method AgenceAdresse|null findOneBy(array $criteria, array $orderBy = null)
+ * @method AgenceAdresse[]    findAll()
+ * @method AgenceAdresse[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class AgenceRepository extends ServiceEntityRepository
+class AgenceAdresseRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Agence::class);
+        parent::__construct($registry, AgenceAdresse::class);
     }
 
-    public function save(Agence $entity, bool $flush = false): void
+    public function save(AgenceAdresse $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class AgenceRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Agence $entity, bool $flush = false): void
+    public function remove(AgenceAdresse $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -39,13 +39,8 @@ class AgenceRepository extends ServiceEntityRepository
         }
     }
 
-    // findAllWithAdresse
-
-
-
-
 //    /**
-//     * @return Agence[] Returns an array of Agence objects
+//     * @return AgenceAdresse[] Returns an array of AgenceAdresse objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -59,7 +54,7 @@ class AgenceRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Agence
+//    public function findOneBySomeField($value): ?AgenceAdresse
 //    {
 //        return $this->createQueryBuilder('a')
 //            ->andWhere('a.exampleField = :val')

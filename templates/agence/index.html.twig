@@ -6,6 +6,90 @@
 <div class="container-fluid my-4 p-4 bg-white">
     <h4>Gestion des Agences</h4>
 
+    {# flash message #}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {# flash message #}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {# flash message #}
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-warning">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {# flash message #}
+    {% for message in app.flashes('info') %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {# flash message #}
+    {% for message in app.flashes('primary') %}
+        <div class="alert alert-primary">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {# flash message #}
+    {% for message in app.flashes('secondary') %}
+        <div class="alert alert-secondary">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {# flash message #}
+    {% for message in app.flashes('light') %}
+        <div class="alert alert-light">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {# flash message #}
+    {% for message in app.flashes('dark') %}
+        <div class="alert alert-dark">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {# flash message #}
+    {% for message in app.flashes('link') %}
+        <div class="alert alert-link">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {# flash message #}
+    {% for message in app.flashes('white') %}
+        <div class="alert alert-white">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {# flash message #}
+    {% for message in app.flashes('black') %}
+        <div class="alert alert-black">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {# flash message #}
+    {% for message in app.flashes('muted') %}
+        <div class="alert alert-muted">
+            {{ message }}
+        </div>
+    {% endfor %}
+
     <table class="table">
         <thead>
             <tr>
@@ -17,6 +101,9 @@
                 {# <th>Description</th> #}
                 <th>Visuel</th>
                 <th>Email</th>
+                {# City #}
+                 <th>Adresse</th>
+
                 <th>Localisation</th>
                 <th>Telephone</th>
                 <th>Horaires</th>
@@ -69,6 +156,18 @@
                 </td>
 
                 <td>{{ agence.email }}</td>
+
+                {# City #}
+                <td>{{ agence.adresse }}</td>
+
+
+
+
+                {# access agence City by relation #}
+
+
+
+
 
                 <td>{{ agence.localisation }}</td>
                 <td>{{ agence.telephone }}</td>

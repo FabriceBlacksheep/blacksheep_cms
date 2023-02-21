@@ -11,3 +11,14 @@ import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
+
+
+
+// Gestion media library == >> Input field
+
+// #mLaunch on click open modal
+$('#mLaunch').on('click', function () {
+    $('#myModal').modal('show')
+});
+
+

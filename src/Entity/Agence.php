@@ -80,6 +80,9 @@ class Agence
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $email = null;
 
+    #[ORM\OneToOne(inversedBy: 'agence', cascade: ['persist', 'remove'])]
+    private ?Adresse $Adresse = null;
+
 
     public function getId(): ?int
     {
@@ -274,6 +277,20 @@ class Agence
     public function setEmail(?string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+
+
+    public function getAdresse(): ?Adresse
+    {
+        return $this->Adresse;
+    }
+
+    public function setAdresse(?Adresse $Adresse): self
+    {
+        $this->Adresse = $Adresse;
 
         return $this;
     }

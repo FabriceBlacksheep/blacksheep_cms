@@ -1,6 +1,6 @@
-{% extends 'page.html.twig' %}
+{# {% extends 'page.html.twig' %} #}
 
-{% block title %}Media{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
 
@@ -9,9 +9,11 @@
 
 {# iframe #}
 
-<iframe width="100%" height="900px" src="/manager/?conf=default&tree=1&view=thumbnail" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe id="mediaFrame" width="100%" height="900px" src="/manager/?conf=button&module=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
 
 </div>
+
+
 {% endblock %}

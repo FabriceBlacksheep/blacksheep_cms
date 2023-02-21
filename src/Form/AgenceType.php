@@ -3,6 +3,15 @@
 namespace App\Form;
 
 use App\Entity\Agence;
+// adresse entity
+use App\Entity\Adresse;
+// adresse form
+use App\Form\AdresseType;
+// adresse repository
+use App\Repository\AdresseRepository;
+// entity type
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,6 +29,9 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 // textfield type
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+// artgris file bundle
+use Artgris\Bundle\FileManagerBundle\Form\Type\ArtgrisFileType;
+
 
 
 class AgenceType extends AbstractType
@@ -132,7 +144,6 @@ class AgenceType extends AbstractType
             ])
 
 
-
             ->add('localisation', null, [
                 'required' => true,
                 'label' => 'Localisation',
@@ -161,17 +172,16 @@ class AgenceType extends AbstractType
                 ],
             ])
 
-
-
-            // ->add('horaires',null, [
-            //     'required' => true,
-            //     'label' => 'Horaires',
-            //     'attr' => [
-            //         'class' => 'form-control',
-            //     ],
-            // ])
-
-
+                // access entity adresse and add it to agence form
+            ->add('adresse', AdresseType::class, [
+                'required' => true,
+                // mapped false
+                'mapped' => true,
+                'label' => 'Adresse',
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
 
 
 
@@ -196,12 +206,14 @@ class AgenceType extends AbstractType
 
 
 
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Agence::class,
+
         ]);
 
 
