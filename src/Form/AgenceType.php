@@ -7,6 +7,11 @@ use App\Entity\Agence;
 use App\Entity\Adresse;
 // adresse form
 use App\Form\AdresseType;
+// form user
+use App\Form\UserType;
+
+// entity User
+use App\Entity\User;
 // adresse repository
 use App\Repository\AdresseRepository;
 // entity type
@@ -39,6 +44,29 @@ class AgenceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+
+            // add user entitytype
+            ->add('user', EntityType::class, [
+                // mapped => false
+                'mapped' => false,
+                'class' => User::class,
+                // choice label nom et prenom
+                // 'choice_label' => 'nom',
+                'choice_label' => 'email',
+                // expanded => true
+                'expanded' => false,
+                'label' => false,
+                'attr' => [
+                    'class' => 'form-control',
+                ],
+            ])
+
+
+            // get collection users from agence entity
+
+
+
+
             ->add('nom', null, [
                 'required' => true,
                 'label' => 'Nom',

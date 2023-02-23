@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use ApiPlatform\Metadata\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -37,6 +39,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $Prenom = null;
+
+    #[ORM\ManyToMany(targetEntity: Agence::class, inversedBy: 'users')]
+    private Collection $Agence;
+
+
+        //  public to string return email
+        public function getIdentite(): string
+        {
+            // return Nom + Prenom
+            $identite = $this->prenom. ' ' .$this->nom;
+            return $identite;
+
+
+        }
+
+    public function __construct()
+    {
+        $this->Agence = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -131,4 +152,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Agence>
+     */
+    public function getAgence(): Collection
+    {
+        return $this->Agence;
+    }
+
+    public function addAgence(Agence $agence): self
+    {
+        if (!$this->Agence->contains($agence)) {
+            $this->Agence->add($agence);
+        }
+
+        return $this;
+    }
+
+    public function removeAgence(Agence $agence): self
+    {
+        $this->Agence->removeElement($agence);
+
+        return $this;
+    }
+
+
+
+
+
+
 }

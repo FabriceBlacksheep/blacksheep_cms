@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\AgenceRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 // Api Platform
@@ -82,6 +83,14 @@ class Agence
 
     #[ORM\OneToOne(inversedBy: 'agence', cascade: ['persist', 'remove'])]
     private ?Adresse $Adresse = null;
+
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'Agence')]
+    private Collection $users;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -295,4 +304,41 @@ class Agence
         return $this;
     }
 
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->addAgence($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeAgence($this);
+        }
+
+        return $this;
+    }
+
+
+    // public function __toString() to return user email
+    public function __toString()
+    {
+        return $this->email;
+    }
+
 }
+
+
+//

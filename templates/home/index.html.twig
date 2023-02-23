@@ -29,6 +29,11 @@
     </div>
 </div>
 <div class="row mb-2">
+
+{# if role != webmaster || user #}
+
+ {% if is_granted('ROLE_ADMIN') %}
+
     <div class="col-md-3">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative  bg-white text-dark">
         <div class="col p-4 d-flex flex-column position-static">
@@ -44,6 +49,9 @@
         </div>
       </div>
     </div>
+
+
+
     <div class="col-md-3">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white text-dark">
         <div class="col p-4 d-flex flex-column position-static">
@@ -60,6 +68,10 @@
       </div>
     </div>
 
+{# end if #}
+
+{% endif %}
+{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_WEBMASTER') %}
     <div class="col-md-3">
       <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white text-dark">
         <div class="col p-4 d-flex flex-column position-static">
@@ -112,7 +124,7 @@
 
 
 </div>
-
+{% endif %}
 
 
  {% if is_granted('ROLE_ADMIN') %}

@@ -6,6 +6,27 @@
 
 {{ form_start(form) }}
 <br/>
+
+<div class="row">
+
+<div class="col-3">
+<label/>Responsable de l'Agence</label>
+{{ form_row(form.user) }}
+<br/>
+</div>
+<div class="col-6">
+<br/>
+{# button add user  #}
+<button type="button" id="userAdd" class="btn btn-primary">
+  <i class="fa fa-user"></i> Ajouter un utilisateur
+</button>
+<br/>
+</div>
+
+</div>
+
+
+
 <div class="row">
 
 <div class="col-3">
@@ -208,6 +229,19 @@
 
 <script>
     $(document).ready(function () {
+
+
+
+    // btn userAdd click
+    $('#userAdd').click(function () {
+
+       location.href = "{{ path('app_user_new') }}";
+
+    });
+
+
+
+
 
 
 
