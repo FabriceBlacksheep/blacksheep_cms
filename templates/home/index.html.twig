@@ -4,167 +4,241 @@
 
 {% block body %}
 
-<div class="container mt-4 py-4">
-
-<div class="row mb-2">
-    <div class="col-md-12">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-550 position-relative  bg-white text-dark">
-        <div class="col p-4 d-flex flex-column position-static">
-
-          <h5 class="mb-0"><i class="fa fa-newspaper"></i> JOURNAL DE BORD</h5>
-
-          <p class="card-text mb-auto py-4">
-          LOGS Applicatifs<br>
-          16/02/2022 : Implémentation librairie de média<br>
-          15/02/2022 : Implémentation gestion des langues pour les contenus<br>
-          13/02/2022 : Mise en place de la page d'accueil du backoffice<br>
-          12/02/2022 : API Rest
-          </p>
-
-        </div>
-        <div class="col-auto d-none d-lg-block">
-         {# <img src="/img/California-1-1.jpg" width="auto" height="300"/> #}
-        </div>
-      </div>
-    </div>
-</div>
-<div class="row mb-2">
-
-{# if role != webmaster || user #}
-
- {% if is_granted('ROLE_ADMIN') %}
-
-    <div class="col-md-3">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative  bg-white text-dark">
-        <div class="col p-4 d-flex flex-column position-static">
-
-          <h5 class="mb-0"><i class="fa fa-building"></i> AGENCES</h5>
-
-          <p class="card-text mb-auto py-4">Gestion des agences BLACKSHEEP</p>
-          <br/>
-          <a class="btnCustom btn btn-sm btn-success" href="/agence" class="stretched-link">Poursuivre <i class="fa fa-arrow-right"></i></a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-         {# <img src="/img/California-1-1.jpg" width="auto" height="300"/> #}
-        </div>
-      </div>
-    </div>
 
 
-
-    <div class="col-md-3">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white text-dark">
-        <div class="col p-4 d-flex flex-column position-static">
-
-          <h5 class="mb-0"><i class="fa fa-van-shuttle"></i> CAMPERVANS</h5>
-
-          <p class="mb-auto py-4">Gestion du parc de Campervans</p>
-          <br/>
-           <a class="btnCustom btn btn-sm btn-success" href="/campervan" class="stretched-link">Poursuivre <i class="fa fa-arrow-right"></i></a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-          {# <img src="/img/California-1-1.jpg" width="auto" height="300"/> #}
-        </div>
-      </div>
-    </div>
-
-{# end if #}
-
-{% endif %}
-{% if is_granted('ROLE_ADMIN') or is_granted('ROLE_WEBMASTER') %}
-    <div class="col-md-3">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white text-dark">
-        <div class="col p-4 d-flex flex-column position-static">
-
-          <h5 class="mb-0"><i class="fa fa-newspaper"></i> CONTENUS</h5>
-
-          <p class="card-text mb-auto py-4">Gestion des ressources (SEO, Pages...)</p>
-          <br/>
-           <a class="btnCustom btn btn-sm btn-success" href="/content" class="stretched-link" >Poursuivre <i class="fa fa-arrow-right"></i></a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-      {# <img src="/img/California-1-1.jpg" width="auto" height="300"/> #}
-       </div>
-      </div>
-</div>
-
-    <div class="col-md-3">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white text-dark">
-        <div class="col p-4 d-flex flex-column position-static">
-
-          <h5 class="mb-0"><i class="fa fa-camera"></i> MEDIA</h5>
-
-          <p class="card-text mb-auto py-4">Gestion des médias (Images, PDF...)</p>
-          <br/>
-           <a class="btnCustom btn btn-sm btn-success" href="/library" class="stretched-link" >Poursuivre <i class="fa fa-arrow-right"></i></a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-      {# <img src="/img/California-1-1.jpg" width="auto" height="300"/> #}
-       </div>
-      </div>
-</div>
-
-<div class="row mb-2">
-
-    <div class="col-md-4">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white text-dark">
-        <div class="col p-4 d-flex flex-column position-static">
-
-          <h5 class="mb-0"><i class="fa fa-link"></i> CATEGORIES</h5>
-
-          <p class="card-text mb-auto py-4">Gestion des categories (SEO, Pages...)</p>
-          <br/>
-           <a class="btnCustom btn btn-sm btn-success" href="/category" class="stretched-link" >Poursuivre <i class="fa fa-arrow-right"></i></a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-      {# <img src="/img/California-1-1.jpg" width="auto" height="300"/> #}
-       </div>
-      </div>
-
-
+<div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-10">
+<div class="card-xl-stretch me-md-6 shadow-sm">
+															<!--begin::Overlay-->
+															<a class="d-block overlay" data-fslightbox="latest-posts" href="./img/">
+																<!--begin::Image-->
+																<div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" style="background-image:url('/img/Grenoble.jpg')"></div>
+																<!--end::Image-->
+																<!--begin::Action-->
+																<div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+																	<i class="bi bi-eye-fill fs-2x text-white"></i>
+																</div>
+																<!--end::Action-->
+															</a>
+															<!--end::Overlay-->
+															<!--begin::Body-->
+															<div class="mt-5 p-5">
+																<!--begin::Title-->
+																<a href="#" class="fs-4 text-dark fw-bold text-hover-primary lh-base">Agences BLACKSHEEP</a>
+																<!--end::Title-->
+																<!--begin::Text-->
+																<div class="fw-semibold fs-5 text-gray-600 pt-3">Gestion des Agences BLACKSHEEP</div>
+																<!--end::Text-->
+																<!--begin::Footer-->
+																<div class="d-flex flex-stack flex-wrap pt-4 gap-2">
+																	<!--begin::Label-->
+																	<span class="rounded border border-dashed fs-2 fw-bold text-dark py-1 px-2">
+																	<span class="fs-6 fw-semibold text-gray-400"></span></span>
+																	<!--end::Label-->
+																	<!--begin::Action-->
+																	<a href="/agence" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Consulter</a>
+																	<!--end::Action-->
+																</div>
+																<!--end::Footer-->
+															</div>
+															<!--end::Body-->
+														</div>
 
 </div>
-{% endif %}
 
 
- {% if is_granted('ROLE_ADMIN') %}
-    <div class="col-md-4">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white text-dark">
-        <div class="col p-4 d-flex flex-column position-static">
+<div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-10">
+<div class="card-xl-stretch me-md-6 shadow-sm">
+															<!--begin::Overlay-->
+															<a class="d-block overlay" data-fslightbox="latest-posts" href="./img/">
+																<!--begin::Image-->
+																<div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" style="background-image:url('/img/FlorianKeller.Images_6706-scaled-e1669024570782.webp')"></div>
+																<!--end::Image-->
+																<!--begin::Action-->
+																<div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+																	<i class="bi bi-eye-fill fs-2x text-white"></i>
+																</div>
+																<!--end::Action-->
+															</a>
+															<!--end::Overlay-->
+															<!--begin::Body-->
+															<div class="mt-5 p-5">
+																<!--begin::Title-->
+																<a href="#" class="fs-4 text-dark fw-bold text-hover-primary lh-base">Campervans BLACKSHEEP</a>
+																<!--end::Title-->
+																<!--begin::Text-->
+																<div class="fw-semibold fs-5 text-gray-600 pt-3">Gestion des Campervans BLACKSHEEP</div>
+																<!--end::Text-->
+																<!--begin::Footer-->
+																<div class="d-flex flex-stack flex-wrap pt-4 gap-2">
+																	<!--begin::Label-->
+																	<span class="rounded border border-dashed fs-2 fw-bold text-dark py-1 px-2">
+																	<span class="fs-6 fw-semibold text-gray-400"></span></span>
+																	<!--end::Label-->
+																	<!--begin::Action-->
+																	<a href="/campervan" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Consulter</a>
+																	<!--end::Action-->
+																</div>
+																<!--end::Footer-->
+															</div>
+															<!--end::Body-->
+														</div>
 
-          <h5 class="mb-0"><i class="fa fa-user"></i> UTILISATEURS</h5>
-
-          <p class="mb-auto py-4">Gestion des utilisateurs de la plateforme</p>
-           <a class="btnCustom btn btn-sm btn-success" href="/user" class="stretched-link">Poursuivre <i class="fa fa-arrow-right"></i> </a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-         {# <img src="/img/California-1-1.jpg" width="auto" height="300"/> #}
-        </div>
-      </div>
-    </div>
-
-  {# if user role == admin #}
-
-
-    <div class="col-md-4">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative bg-white text-dark">
-        <div class="col p-4 d-flex flex-column position-static">
-
-          <h5 class="mb-0"><i class="fa fa-desktop"></i> API</h5>
-
-          <p class="card-text mb-auto py-4">Accès API Restful</p>
-           <a class="btnCustom btn btn-sm btn-success" href="/api" class="stretched-linwidth="200" height="250"k">Poursuivre <i class="fa fa-arrow-right"></i></a>
-        </div>
-        <div class="col-auto d-none d-lg-block">
-      {# <img src="/img/California-1-1.jpg" width="auto" height="300"/> #}
-       </div>
-      </div>
-    </div>
-
-  </div>
-  </div>
-{% endif %}
 </div>
+
+
+<div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-10">
+<div class="card-xl-stretch me-md-6 shadow-sm">
+															<!--begin::Overlay-->
+															<a class="d-block overlay" data-fslightbox="latest-posts" href="./img/">
+																<!--begin::Image-->
+																<div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" style="background-image:url('/img/cms.png')"></div>
+																<!--end::Image-->
+																<!--begin::Action-->
+																<div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+																	<i class="bi bi-eye-fill fs-2x text-white"></i>
+																</div>
+																<!--end::Action-->
+															</a>
+															<!--end::Overlay-->
+															<!--begin::Body-->
+															<div class="mt-5 p-5">
+																<!--begin::Title-->
+																<a href="#" class="fs-4 text-dark fw-bold text-hover-primary lh-base">CMS BLACKSHEEP</a>
+																<!--end::Title-->
+																<!--begin::Text-->
+																<div class="fw-semibold fs-5 text-gray-600 pt-3">Gestion des contenus BLACKSHEEP (Pages, articles, SEO...)</div>
+																<!--end::Text-->
+																<!--begin::Footer-->
+																<div class="d-flex flex-stack flex-wrap pt-4 gap-2">
+																	<!--begin::Label-->
+																	<span class="rounded border border-dashed fs-2 fw-bold text-dark py-1 px-2">
+																	<span class="fs-6 fw-semibold text-gray-400"></span></span>
+																	<!--end::Label-->
+																	<!--begin::Action-->
+																	<a href="/content" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Consulter</a>
+																	<!--end::Action-->
+																</div>
+																<!--end::Footer-->
+															</div>
+															<!--end::Body-->
+														</div>
+
+</div>
+
+<div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-10">
+<div class="card-xl-stretch me-md-6 shadow-sm">
+															<!--begin::Overlay-->
+															<a class="d-block overlay" data-fslightbox="latest-posts" href="./img/">
+																<!--begin::Image-->
+																<div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" style="background-image:url('/img/media.png')"></div>
+																<!--end::Image-->
+																<!--begin::Action-->
+																<div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+																	<i class="bi bi-eye-fill fs-2x text-white"></i>
+																</div>
+																<!--end::Action-->
+															</a>
+															<!--end::Overlay-->
+															<!--begin::Body-->
+															<div class="mt-5 p-5">
+																<!--begin::Title-->
+																<a href="#" class="fs-4 text-dark fw-bold text-hover-primary lh-base">MEDIA BLACKSHEEP</a>
+																<!--end::Title-->
+																<!--begin::Text-->
+																<div class="fw-semibold fs-5 text-gray-600 pt-3">Gestion des médias BLACKSHEEP (Visuels, PDF...)</div>
+																<!--end::Text-->
+																<!--begin::Footer-->
+																<div class="d-flex flex-stack flex-wrap pt-4 gap-2">
+																	<!--begin::Label-->
+																	<span class="rounded border border-dashed fs-2 fw-bold text-dark py-1 px-2">
+																	<span class="fs-6 fw-semibold text-gray-400"></span></span>
+																	<!--end::Label-->
+																	<!--begin::Action-->
+																	<a href="/library" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Consulter</a>
+																	<!--end::Action-->
+																</div>
+																<!--end::Footer-->
+															</div>
+															<!--end::Body-->
+														</div>
+
+</div>
+
+<div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-10">
+<div class="card-xl-stretch me-md-6 shadow-sm">
+															<!--begin::Overlay-->
+															<a class="d-block overlay" data-fslightbox="latest-posts" href="./img/">
+																<!--begin::Image-->
+																<div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" style="background-image:url('/img/users.png')"></div>
+																<!--end::Image-->
+																<!--begin::Action-->
+																<div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+																	<i class="bi bi-eye-fill fs-2x text-white"></i>
+																</div>
+																<!--end::Action-->
+															</a>
+															<!--end::Overlay-->
+															<!--begin::Body-->
+															<div class="mt-5 p-5">
+																<!--begin::Title-->
+																<a href="#" class="fs-4 text-dark fw-bold text-hover-primary lh-base">UTILISATEURS BLACKSHEEP</a>
+																<!--end::Title-->
+																<!--begin::Text-->
+																<div class="fw-semibold fs-5 text-gray-600 pt-3">Gestion des utilisateurs BLACKSHEEP</div>
+																<!--end::Text-->
+																<!--begin::Footer-->
+																<div class="d-flex flex-stack flex-wrap pt-4 gap-2">
+																	<!--begin::Label-->
+																	<span class="rounded border border-dashed fs-2 fw-bold text-dark py-1 px-2">
+																	<span class="fs-6 fw-semibold text-gray-400"></span></span>
+																	<!--end::Label-->
+																	<!--begin::Action-->
+																	<a href="/user" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Consulter</a>
+																	<!--end::Action-->
+																</div>
+																<!--end::Footer-->
+															</div>
+															<!--end::Body-->
+														</div>
+
+</div>
+
+<div class="col-md-6 col-lg-6 col-xl-6 col-xxl-4 mb-md-5 mb-xl-10">
+<div class="card-xl-stretch me-md-6 shadow-sm">
+															<!--begin::Overlay-->
+															<a class="d-block overlay" data-fslightbox="latest-posts" href="./img/">
+																<!--begin::Image-->
+																<div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" style="background-image:url('/img/api.png')"></div>
+																<!--end::Image-->
+																<!--begin::Action-->
+																<div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+																	<i class="bi bi-eye-fill fs-2x text-white"></i>
+																</div>
+																<!--end::Action-->
+															</a>
+															<!--end::Overlay-->
+															<!--begin::Body-->
+															<div class="mt-5 p-5">
+																<!--begin::Title-->
+																<a href="#" class="fs-4 text-dark fw-bold text-hover-primary lh-base">API BLACKSHEEP</a>
+																<!--end::Title-->
+																<!--begin::Text-->
+																<div class="fw-semibold fs-5 text-gray-600 pt-3">Gestion de l'API Rest BLACKSHEEP</div>
+																<!--end::Text-->
+																<!--begin::Footer-->
+																<div class="d-flex flex-stack flex-wrap pt-4 gap-2">
+																	<!--begin::Label-->
+																	<span class="rounded border border-dashed fs-2 fw-bold text-dark py-1 px-2">
+																	<span class="fs-6 fw-semibold text-gray-400"></span></span>
+																	<!--end::Label-->
+																	<!--begin::Action-->
+																	<a href="/api" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> Consulter</a>
+																	<!--end::Action-->
+																</div>
+																<!--end::Footer-->
+															</div>
+															<!--end::Body-->
+														</div>
 
 </div>
 {% endblock %}

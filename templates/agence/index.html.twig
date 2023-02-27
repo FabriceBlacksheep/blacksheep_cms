@@ -3,7 +3,7 @@
 {% block title %}Agence index{% endblock %}
 
 {% block body %}
-<div class="container-fluid my-4 p-4 bg-white">
+<div class="table-responsive">
     <h4>Gestion des Agences</h4>
 
     {# flash message #}
@@ -90,21 +90,22 @@
         </div>
     {% endfor %}
 
-    <table class="table">
+	<table class="table table-striped gy-7 gs-7">
+
         <thead>
-            <tr>
+            <tr class="fw-semibold fs-6 text-gray-800 border-bottom border-gray-200">
                 <th>Statut</th>
                 <th>Nom</th>
                 <th>IdLocpro</th>
 {# type #}
                 <th>Type</th>
                 {# <th>Description</th> #}
-                <th>Visuel</th>
+                {# <th>Visuel</th> #}
                 <th>Email</th>
                 {# City #}
                  <th>Adresse</th>
 
-                <th>Localisation</th>
+                {# <th>Localisation</th> #}
                 <th>Telephone</th>
                 <th>Horaires</th>
                 <th>Actions</th>
@@ -112,7 +113,7 @@
         </thead>
         <tbody>
         {% for agence in agences %}
-            <tr>
+            <tr class="fw-semibold fs-6 text-gray-800 border-bottom border-gray-200">
                 <td>
 
                 {% if agence.active == 0 %}
@@ -141,19 +142,20 @@
                 {# <td>{{ agence.description|striptags|slice(0, 50) }}</td> #}
 
 
-                <td>
+                {# <td> #}
 
                 {# Twig condition if agence.visuel exists #}
-                {% if agence.visuel %}
+
+                {# {% if agence.visuel %}
                     <img src="{{ asset('upload/' ~ agence.visuel) }}" alt="agence.visuel" width="50px"/>
                 {% else %}
                     Aucun visuel
-                {% endif %}
-
-                {# <img src="{{ asset('upload/' ~ agence.visuel) }}" alt="agence.visuel" width="50px"/> #}
+                {% endif %} #}
 
 
-                </td>
+{#
+
+                </td> #}
 
                 <td>{{ agence.email }}</td>
 
@@ -169,12 +171,12 @@
 
 
 
-                <td>{{ agence.localisation }}</td>
+                {# <td>{{ agence.localisation }}</td> #}
                 <td>{{ agence.telephone }}</td>
                 <td>{{ agence.horaires }}</td>
                 <td>
-                    <a class="btn btn-success" href="{{ path('app_agence_show', {'id': agence.id}) }}"><i class="fa fa-eye"></i></a>
-                    <a class="btn btn-warning" href="{{ path('app_agence_edit', {'id': agence.id}) }}"><i class="fa fa-pen"></i></a>
+                    <a class="btn  btn-success btn-sm" href="{{ path('app_agence_show', {'id': agence.id}) }}"><i class="fa fa-eye"></i></a>
+                    <a class="btn  btn-warning btn-sm" href="{{ path('app_agence_edit', {'id': agence.id}) }}"><i class="fa fa-pen"></i></a>
 
                     {# delete #}
 
