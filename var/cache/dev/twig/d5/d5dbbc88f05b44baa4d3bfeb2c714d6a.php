@@ -85,7 +85,7 @@ class __TwigTemplate_8c8aac41961b536edfd46931ccbe826e extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "<div class=\"container-fluid my-4 py-4 bg-white\">
+        echo "<div class=\"container-fluid my-4 py-4 \">
   <div class=\"flex flex-col\">
   <div class=\"overflow-x-auto sm:-mx-6 lg:-mx-8\">
     <div class=\"py-2 inline-block min-w-full sm:px-6 lg:px-8\">
@@ -222,7 +222,7 @@ class __TwigTemplate_8c8aac41961b536edfd46931ccbe826e extends Template
 {% block title %}Campervan index{% endblock %}
 
 {% block body %}
-<div class=\"container-fluid my-4 py-4 bg-white\">
+<div class=\"container-fluid my-4 py-4 \">
   <div class=\"flex flex-col\">
   <div class=\"overflow-x-auto sm:-mx-6 lg:-mx-8\">
     <div class=\"py-2 inline-block min-w-full sm:px-6 lg:px-8\">

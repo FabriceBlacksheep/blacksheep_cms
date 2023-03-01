@@ -84,7 +84,6 @@ return [
     'app_agence_active' => [['id'], ['_controller' => 'App\\Controller\\AgenceController::active'], [], [['text', '/active'], ['variable', '/', '[^/]++', 'id', true], ['text', '/agence']], [], [], []],
     'app_agence_search' => [[], ['_controller' => 'App\\Controller\\AgenceController::search'], [], [['text', '/agence/search']], [], [], []],
     'app_agence_adresse' => [['id'], ['_controller' => 'App\\Controller\\AgenceController::adresse'], [], [['text', '/adresse'], ['variable', '/', '[^/]++', 'id', true], ['text', '/agence']], [], [], []],
-    'app_agence_langue' => [['id', 'langue'], ['_controller' => 'App\\Controller\\AgenceController::langue'], [], [['variable', '/', '[^/]++', 'langue', true], ['variable', '/', '[^/]++', 'id', true], ['text', '/agence']], [], [], []],
     'app_assurance_index' => [[], ['_controller' => 'App\\Controller\\AssuranceController::index'], [], [['text', '/assurance/']], [], [], []],
     'app_assurance_new' => [[], ['_controller' => 'App\\Controller\\AssuranceController::new'], [], [['text', '/assurance/new']], [], [], []],
     'app_assurance_show' => [['id'], ['_controller' => 'App\\Controller\\AssuranceController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/assurance']], [], [], []],

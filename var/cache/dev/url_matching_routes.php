@@ -148,70 +148,67 @@ return [
                             .'|(*:1175)'
                         .')'
                         .'|search(*:1191)'
-                        .'|([^/]++)/(?'
-                            .'|adresse(*:1219)'
-                            .'|([^/]++)(*:1236)'
-                        .')'
+                        .'|([^/]++)/adresse(*:1216)'
                     .')'
                     .'|ssurance/([^/]++)(?'
-                        .'|(*:1267)'
-                        .'|/edit(*:1281)'
-                        .'|(*:1290)'
+                        .'|(*:1246)'
+                        .'|/edit(*:1260)'
+                        .'|(*:1269)'
                     .')'
                 .')'
                 .'|/e(?'
-                    .'|fconnect(?:/([^/]++)(?:/([^/]++))?)?(*:1342)'
-                    .'|lfinder(?:/([^/]++)(?:/([^/]++))?)?(*:1386)'
+                    .'|fconnect(?:/([^/]++)(?:/([^/]++))?)?(*:1321)'
+                    .'|lfinder(?:/([^/]++)(?:/([^/]++))?)?(*:1365)'
                 .')'
                 .'|/_(?'
-                    .'|error/(\\d+)(?:\\.([^/]++))?(*:1427)'
-                    .'|wdt/([^/]++)(*:1448)'
+                    .'|error/(\\d+)(?:\\.([^/]++))?(*:1406)'
+                    .'|wdt/([^/]++)(*:1427)'
                     .'|profiler/([^/]++)(?'
                         .'|/(?'
-                            .'|search/results(*:1495)'
-                            .'|router(*:1510)'
+                            .'|search/results(*:1474)'
+                            .'|router(*:1489)'
                             .'|exception(?'
-                                .'|(*:1531)'
-                                .'|\\.css(*:1545)'
+                                .'|(*:1510)'
+                                .'|\\.css(*:1524)'
                             .')'
                         .')'
-                        .'|(*:1556)'
+                        .'|(*:1535)'
                     .')'
                 .')'
                 .'|/c(?'
                     .'|a(?'
                         .'|mpervan/([^/]++)(?'
-                            .'|(*:1595)'
-                            .'|/edit(*:1609)'
-                            .'|(*:1618)'
+                            .'|(*:1574)'
+                            .'|/edit(*:1588)'
+                            .'|(*:1597)'
                         .')'
                         .'|tegory/([^/]++)(?'
-                            .'|(*:1646)'
+                            .'|(*:1625)'
                             .'|/(?'
-                                .'|edit(*:1663)'
-                                .'|content(*:1679)'
+                                .'|edit(*:1642)'
+                                .'|content(*:1658)'
                             .')'
-                            .'|(*:1689)'
+                            .'|(*:1668)'
                         .')'
                     .')'
                     .'|ontent/([^/]++)(?'
-                        .'|(*:1718)'
-                        .'|/edit(*:1732)'
-                        .'|(*:1741)'
+                        .'|(*:1697)'
+                        .'|/edit(*:1711)'
+                        .'|(*:1720)'
                     .')'
                 .')'
-                .'|/reset\\-password/reset(?:/([^/]++))?(*:1788)'
+                .'|/reset\\-password/reset(?:/([^/]++))?(*:1767)'
                 .'|/user/(?'
                     .'|([^/]++)(?'
-                        .'|(*:1817)'
-                        .'|/edit(*:1831)'
-                        .'|(*:1840)'
+                        .'|(*:1796)'
+                        .'|/edit(*:1810)'
+                        .'|(*:1819)'
                     .')'
-                    .'|reset\\-password/([^/]++)(*:1874)'
+                    .'|reset\\-password/([^/]++)(*:1853)'
                 .')'
                 .'|/manager/(?'
-                    .'|rename/([^/]++)(*:1911)'
-                    .'|file/([^/]++)(*:1933)'
+                    .'|rename/([^/]++)(*:1890)'
+                    .'|file/([^/]++)(*:1912)'
                 .')'
             .')/?$}sDu',
     ],
@@ -308,37 +305,36 @@ return [
         1165 => [[['_route' => 'app_agence_active', '_controller' => 'App\\Controller\\AgenceController::active'], ['id'], ['POST' => 0], null, false, false, null]],
         1175 => [[['_route' => 'app_agence_delete', '_controller' => 'App\\Controller\\AgenceController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
         1191 => [[['_route' => 'app_agence_search', '_controller' => 'App\\Controller\\AgenceController::search'], [], ['POST' => 0], null, false, false, null]],
-        1219 => [[['_route' => 'app_agence_adresse', '_controller' => 'App\\Controller\\AgenceController::adresse'], ['id'], ['GET' => 0], null, false, false, null]],
-        1236 => [[['_route' => 'app_agence_langue', '_controller' => 'App\\Controller\\AgenceController::langue'], ['id', 'langue'], ['GET' => 0], null, false, true, null]],
-        1267 => [[['_route' => 'app_assurance_show', '_controller' => 'App\\Controller\\AssuranceController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1281 => [[['_route' => 'app_assurance_edit', '_controller' => 'App\\Controller\\AssuranceController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1290 => [[['_route' => 'app_assurance_delete', '_controller' => 'App\\Controller\\AssuranceController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1342 => [[['_route' => 'ef_connect', '_controller' => 'FM\\ElfinderBundle\\Controller\\ElFinderController::load', 'instance' => 'default', 'homeFolder' => ''], ['instance', 'homeFolder'], null, null, false, true, null]],
-        1386 => [[['_route' => 'elfinder', '_controller' => 'FM\\ElfinderBundle\\Controller\\ElFinderController::show', 'instance' => 'default', 'homeFolder' => ''], ['instance', 'homeFolder'], null, null, false, true, null]],
-        1427 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
-        1448 => [[['_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'], ['token'], null, null, false, true, null]],
-        1495 => [[['_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'], ['token'], null, null, false, false, null]],
-        1510 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
-        1531 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
-        1545 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
-        1556 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        1595 => [[['_route' => 'app_campervan_show', '_controller' => 'App\\Controller\\CampervanController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1609 => [[['_route' => 'app_campervan_edit', '_controller' => 'App\\Controller\\CampervanController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1618 => [[['_route' => 'app_campervan_delete', '_controller' => 'App\\Controller\\CampervanController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1646 => [[['_route' => 'app_category_show', '_controller' => 'App\\Controller\\CategoryController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1663 => [[['_route' => 'app_category_edit', '_controller' => 'App\\Controller\\CategoryController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1679 => [[['_route' => 'app_category_content', '_controller' => 'App\\Controller\\CategoryController::content'], ['id'], ['GET' => 0], null, false, false, null]],
-        1689 => [[['_route' => 'app_category_delete', '_controller' => 'App\\Controller\\CategoryController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1718 => [[['_route' => 'app_content_show', '_controller' => 'App\\Controller\\ContentController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1732 => [[['_route' => 'app_content_edit', '_controller' => 'App\\Controller\\ContentController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1741 => [[['_route' => 'app_content_delete', '_controller' => 'App\\Controller\\ContentController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1788 => [[['_route' => 'app_reset_password', 'token' => null, '_controller' => 'App\\Controller\\ResetPasswordController::reset'], ['token'], null, null, false, true, null]],
-        1817 => [[['_route' => 'app_user_show', '_controller' => 'App\\Controller\\UserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        1831 => [[['_route' => 'app_user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        1840 => [[['_route' => 'app_user_delete', '_controller' => 'App\\Controller\\UserController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        1874 => [[['_route' => 'app_user_reset_password', '_controller' => 'App\\Controller\\UserController::resetPassword'], ['token'], null, null, false, true, null]],
-        1911 => [[['_route' => 'file_manager_rename', '_controller' => 'Artgris\\Bundle\\FileManagerBundle\\Controller\\ManagerController::renameFileAction'], ['fileName'], null, null, false, true, null]],
-        1933 => [
+        1216 => [[['_route' => 'app_agence_adresse', '_controller' => 'App\\Controller\\AgenceController::adresse'], ['id'], ['GET' => 0], null, false, false, null]],
+        1246 => [[['_route' => 'app_assurance_show', '_controller' => 'App\\Controller\\AssuranceController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1260 => [[['_route' => 'app_assurance_edit', '_controller' => 'App\\Controller\\AssuranceController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1269 => [[['_route' => 'app_assurance_delete', '_controller' => 'App\\Controller\\AssuranceController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1321 => [[['_route' => 'ef_connect', '_controller' => 'FM\\ElfinderBundle\\Controller\\ElFinderController::load', 'instance' => 'default', 'homeFolder' => ''], ['instance', 'homeFolder'], null, null, false, true, null]],
+        1365 => [[['_route' => 'elfinder', '_controller' => 'FM\\ElfinderBundle\\Controller\\ElFinderController::show', 'instance' => 'default', 'homeFolder' => ''], ['instance', 'homeFolder'], null, null, false, true, null]],
+        1406 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
+        1427 => [[['_route' => '_wdt', '_controller' => 'web_profiler.controller.profiler::toolbarAction'], ['token'], null, null, false, true, null]],
+        1474 => [[['_route' => '_profiler_search_results', '_controller' => 'web_profiler.controller.profiler::searchResultsAction'], ['token'], null, null, false, false, null]],
+        1489 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
+        1510 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
+        1524 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
+        1535 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
+        1574 => [[['_route' => 'app_campervan_show', '_controller' => 'App\\Controller\\CampervanController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1588 => [[['_route' => 'app_campervan_edit', '_controller' => 'App\\Controller\\CampervanController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1597 => [[['_route' => 'app_campervan_delete', '_controller' => 'App\\Controller\\CampervanController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1625 => [[['_route' => 'app_category_show', '_controller' => 'App\\Controller\\CategoryController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1642 => [[['_route' => 'app_category_edit', '_controller' => 'App\\Controller\\CategoryController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1658 => [[['_route' => 'app_category_content', '_controller' => 'App\\Controller\\CategoryController::content'], ['id'], ['GET' => 0], null, false, false, null]],
+        1668 => [[['_route' => 'app_category_delete', '_controller' => 'App\\Controller\\CategoryController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1697 => [[['_route' => 'app_content_show', '_controller' => 'App\\Controller\\ContentController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1711 => [[['_route' => 'app_content_edit', '_controller' => 'App\\Controller\\ContentController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1720 => [[['_route' => 'app_content_delete', '_controller' => 'App\\Controller\\ContentController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1767 => [[['_route' => 'app_reset_password', 'token' => null, '_controller' => 'App\\Controller\\ResetPasswordController::reset'], ['token'], null, null, false, true, null]],
+        1796 => [[['_route' => 'app_user_show', '_controller' => 'App\\Controller\\UserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        1810 => [[['_route' => 'app_user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        1819 => [[['_route' => 'app_user_delete', '_controller' => 'App\\Controller\\UserController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        1853 => [[['_route' => 'app_user_reset_password', '_controller' => 'App\\Controller\\UserController::resetPassword'], ['token'], null, null, false, true, null]],
+        1890 => [[['_route' => 'file_manager_rename', '_controller' => 'Artgris\\Bundle\\FileManagerBundle\\Controller\\ManagerController::renameFileAction'], ['fileName'], null, null, false, true, null]],
+        1912 => [
             [['_route' => 'file_manager_file', '_controller' => 'Artgris\\Bundle\\FileManagerBundle\\Controller\\ManagerController::binaryFileResponseAction'], ['fileName'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
