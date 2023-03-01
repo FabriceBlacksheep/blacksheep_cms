@@ -3,8 +3,8 @@
 {% block title %}Agence index{% endblock %}
 
 {% block body %}
-<div class="table-responsive">
-    <h4>Gestion des Agences</h4>
+<div>
+    <h1 style="font-weight:300">GESTION DES AGENCES</h1>
 
     {# flash message #}
     {% for message in app.flashes('success') %}
@@ -90,106 +90,139 @@
         </div>
     {% endfor %}
 
-	<table class="table table-striped gy-7 gs-7">
-
-        <thead>
-            <tr class="fw-semibold fs-6 text-gray-800 border-bottom border-gray-200">
-                <th>Statut</th>
-                <th>Nom</th>
-                <th>IdLocpro</th>
-{# type #}
-                <th>Type</th>
-                {# <th>Description</th> #}
-                {# <th>Visuel</th> #}
-                <th>Email</th>
-                {# City #}
-                 <th>Adresse</th>
-
-                {# <th>Localisation</th> #}
-                <th>Telephone</th>
-                <th>Horaires</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for agence in agences %}
-            <tr class="fw-semibold fs-6 text-gray-800 border-bottom border-gray-200">
-                <td>
-
-                {% if agence.active == 0 %}
-                    <span class="badge bg-success">ACTIVE</span>
-                {% else %}
-                    <span class="badge bg-danger">INACTIVE</span>
-                {% endif %}
-
-
-                </td>
-                <td>{{ agence.nom }}</td>
-                <td>{{ agence.idLocpro }}</td>
-{# type #}
-                <td>
-
-                {% for type in agence.type %}
-                 {% if type == 'Agence propre' %}
-                    <span class="badge bg-success">{{ type }}</span>
-                                            {% elseif type == 'Franchise' %}
-                            <span class="badge bg-warning">{{ type }}</span>
-                        {% endif %}
-                {% endfor %}
-
-                </td>
-
-                {# <td>{{ agence.description|striptags|slice(0, 50) }}</td> #}
-
-
-                {# <td> #}
-
-                {# Twig condition if agence.visuel exists #}
-
-                {# {% if agence.visuel %}
-                    <img src="{{ asset('upload/' ~ agence.visuel) }}" alt="agence.visuel" width="50px"/>
-                {% else %}
-                    Aucun visuel
-                {% endif %} #}
-
-
-{#
-
-                </td> #}
-
-                <td>{{ agence.email }}</td>
-
-                {# City #}
-                <td>{{ agence.adresse }}</td>
-
-
-
-
-                {# access agence City by relation #}
 
 
 
 
 
-                {# <td>{{ agence.localisation }}</td> #}
-                <td>{{ agence.telephone }}</td>
-                <td>{{ agence.horaires }}</td>
-                <td>
-                    <a class="btn  btn-success btn-sm" href="{{ path('app_agence_show', {'id': agence.id}) }}"><i class="fa fa-eye"></i></a>
-                    <a class="btn  btn-warning btn-sm" href="{{ path('app_agence_edit', {'id': agence.id}) }}"><i class="fa fa-pen"></i></a>
+    {# div container #}
 
-                    {# delete #}
+    <div class="container-fluid mt-5">
+        <div class="row" id="list">
 
-                </td>
-            </tr>
+
+
+        <div class="col-6 mb-4">
+        <a class="btn btn-sm btn-success pull-right" href="{{ path('app_agence_new') }}"><i class="fa fa-plus"></i> Ajouter</a>
+        </div>
+
+             <div class="col-6 mb-4">
+       {# input search #}
+        <form action="{{ path('app_agence_search') }}" method="get">
+            <div class="input-group mb-3">
+                <input type="text" id="searchTerm" class="form-control searchTerm" placeholder="Rechercher une Agence (Nom, ville...)" name="search" value="">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+        </div>
+
+
+
+
+         {% for agence in agences %}
+            <div class="col-md-6 col-lg-3 col-sm-6 col-xs-6 {{ agence.nom }} mb-4 filtered">
+                <div class="card card-flush h-xl-100 ribbon ribbon-top ribbon-vertical">
+
+                  {% if agence.active == 0 %}
+                                                                                  <div class="ribbon-label bg-success">ACTIVE</div>
+                                                                    {% else %}
+                                                                                <div class="ribbon-label bg-danger">INACTIVE</div>
+                                                                    {% endif %}
+
+
+												<!--begin::Body-->
+												<div class="card-body text-center pb-5">
+
+
+													<!--begin::Overlay-->
+													<a class="d-block overlay" data-fslightbox="lightbox-hot-sales" href="{{ asset('upload/' ~ agence.visuel) }}">
+														<!--begin::Image-->
+
+                                                                   {% if agence.visuel %}
+
+                                            <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded mb-7" style="height: 266px;background-image:url('{{ asset('upload/' ~ agence.visuel) }}')"></div>
+
+                                                                    {% else %}
+                                                                        Aucun visuel
+                                                                    {% endif %}
+
+
+                                                        <!--end::Image-->
+														<!--begin::Action-->
+														<div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+															<i class="bi bi-eye-fill fs-2x text-white"></i>
+														</div>
+														<!--end::Action-->
+													</a>
+													<!--end::Overlay-->
+													<!--begin::Info-->
+													<div class="d-flex align-items-end flex-stack mb-1">
+														<!--begin::Title-->
+														<div class="text-start">
+															<span class="fw-bold text-gray-800 cursor-pointer text-hover-primary fs-4 d-block">{{ agence.nom }}</span>
+															{# <span class="text-gray-400 mt-1 fw-bold fs-6">{{ agence.description|striptags|slice(0, 50) }}</span> #}
+                                                            {# descripttion html format #}
+
+
+														</div>
+														<!--end::Title-->
+														<!--begin::Total-->
+
+														<!--end::Total-->
+													</div>
+													<!--end::Info-->
+												</div>
+												<!--end::Body-->
+												<!--begin::Footer-->
+												<div class="card-footer d-flex flex-stack pt-0">
+													<!--begin::Link-->
+													<a class="btn btn-sm btn-primary flex-shrink-0 me-2" href="{{ path('app_agence_show', {'id': agence.id}) }}" ><i class="fa fa-eye"></i> Consulter</a>
+													<a class="btn btn-sm btn-danger flex-shrink-0 me-2" href="{{ path('app_agence_edit', {'id': agence.id}) }}" ><i class="fa fa-pen"></i> Modifier</a>
+
+                                                    <!--end::Link-->
+													<!--begin::Link-->
+
+													<!--end::Link-->
+												</div>
+												<!--end::Footer-->
+											</div>
+            </div>
         {% else %}
             <tr>
                 <td colspan="9">Aucune agence :(</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
 
-    <a class="btn btn-secondary" href="{{ path('app_agence_new') }}">Créer une agence</a>
+
+
     </div>
+
+
+
+
+    </div>
+</div>
+<script>
+{# filter div based on input value #}
+var input = document.getElementById("searchTerm");
+input.addEventListener("input", myFunction);
+
+function myFunction(e) {
+
+    var filter = e.target.value.toUpperCase();
+    var list = document.getElementById("list");
+    var items = list.getElementsByClassName("filtered");
+
+    for (var i = 0; i < items.length; i++) {
+        var item = items[i];
+        var text = item.getElementsByClassName("card-body text-center pb-5")[0].innerText.toUpperCase();
+        if (text.indexOf(filter) > -1) {
+            item.style.display = "";
+        } else {
+            item.style.display = "none";
+        }
+    }
+
+}
+</script>
 {% endblock %}

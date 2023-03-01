@@ -172,14 +172,35 @@ class AgenceType extends AbstractType
             ])
 
 
-            ->add('localisation', null, [
-                'required' => true,
-                'label' => 'Localisation',
+            // ->add('localisation', null, [
+            //     'required' => true,
+            //     'label' => 'Localisation',
+            //     'attr' => [
+            //         'class' => 'form-control',
+            //         'placeholder' => 'Lat: 48.856614, Long: 2.3522219',
+            //     ],
+            // ])
+
+            // longitude
+            ->add('longitude', null, [
+                'required' => false,
+                'label' => 'Longitude',
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => 'Lat: 48.856614, Long: 2.3522219',
+                    'placeholder' => '2.3522219',
                 ],
             ])
+
+            // latitude
+            ->add('latitude', null, [
+                'required' => false,
+                'label' => 'Latitude',
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => '48.856614',
+                ],
+            ])
+
             ->add('telephone',null, [
                 'required' => true,
                 'label' => 'Téléphone',

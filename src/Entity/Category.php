@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+// use controller category
+use App\Controller\CategoryController;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -9,6 +11,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
+
+
+
 #[ApiResource]
 class Category
 {
@@ -25,6 +30,8 @@ class Category
 
     #[ORM\ManyToMany(targetEntity: Content::class, mappedBy: 'categories')]
     private Collection $contents;
+
+
 
     public function __construct()
     {
@@ -99,4 +106,15 @@ class Category
 
         return $this;
     }
+
+    // create api route to get content by category
+    public function getContentsByCategory(): Collection
+    {
+        return $this->contents;
+    }
+
+
+
+
+
 }

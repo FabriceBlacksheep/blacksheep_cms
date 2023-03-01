@@ -39,6 +39,17 @@ class AgenceRepository extends ServiceEntityRepository
         }
     }
 
+    // search by name
+    public function findByName($name)
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.name LIKE :name')
+            ->setParameter('name', '%'.$name.'%')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // findAllWithAdresse
 
 

@@ -181,6 +181,34 @@ class AgenceController extends AbstractController
         return $this->redirectToRoute('app_agence_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    // app_agence_search route post method
+    #[Route('/search', name: 'app_agence_search', methods: ['POST'])]
+    public function search(Request $request, AgenceRepository $agenceRepository): Response
+    {
+        $search = $request->request->get('search');
+        // findByName
+        $agences = $agenceRepository->findByName($search);
+
+
+
+
+        return $this->render('agence/index.html.twig', [
+            'agences' => $agences,
+        ]);
+    }
+
+
+    //  api platform route return adresse of agence
+    #[Route('/{id}/adresse', name: 'app_agence_adresse', methods: ['GET'])]
+    public function adresse(Agence $agence): Response
+    {
+        $adresse = $agence->getAdresse();
+
+        return $this->json($adresse, 200, [], ['groups' => 'adresse:read']);
+
+    }
+
+
 
 
 

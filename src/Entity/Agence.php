@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Entity;
+// adresse entity
+// agence controller
+use App\Controller\AgenceController;
+use App\Repository\AdresseRepository;
 
 use App\Repository\AgenceRepository;
 use Doctrine\Common\Collections\Collection;
@@ -44,9 +48,6 @@ class Agence
     private ?string $visuel = null;
 
 
-    #[ORM\Column(length: 255)]
-    private ?string $localisation = null;
-
     #[ORM\Column]
     private ?string $telephone = null;
 
@@ -86,6 +87,12 @@ class Agence
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'Agence')]
     private Collection $users;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $Longitude = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $Latitude = null;
 
     public function __construct()
     {
@@ -146,17 +153,7 @@ class Agence
         return $this;
     }
 
-    public function getLocalisation(): ?string
-    {
-        return $this->localisation;
-    }
 
-    public function setLocalisation(string $localisation): self
-    {
-        $this->localisation = $localisation;
-
-        return $this;
-    }
 
     public function getTelephone(): ?string
     {
@@ -337,6 +334,40 @@ class Agence
     {
         return $this->email;
     }
+
+    public function getLongitude(): ?float
+    {
+        return $this->Longitude;
+    }
+
+    public function setLongitude(?float $Longitude): self
+    {
+        $this->Longitude = $Longitude;
+
+        return $this;
+    }
+
+    public function getLatitude(): ?float
+    {
+        return $this->Latitude;
+    }
+
+    public function setLatitude(?float $Latitude): self
+    {
+        $this->Latitude = $Latitude;
+
+        return $this;
+    }
+
+    // api platform return adresse of agence
+    public function getAdresseAgence(): ?Adresse
+    {
+        return $this->Adresse;
+    }
+
+
+
+
 
 }
 

@@ -75,4 +75,19 @@ class CategoryController extends AbstractController
 
         return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    // create api endpoint for category to get content by category
+    #[Route('/{id}/content', name: 'app_category_content', methods: ['GET'])]
+    public function content(Category $category): Response
+    {
+
+        // return json response
+        return $this->json($category->getContents());
+
+    }
+
+
+
+
+
 }
