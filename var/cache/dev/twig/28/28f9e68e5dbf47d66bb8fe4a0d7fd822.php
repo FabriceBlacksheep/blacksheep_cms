@@ -921,7 +921,7 @@ class __TwigTemplate_e98dfcf2b77e0cf575da76bb334c97e7 extends Template
 \t\t\t\t\t\t\t\t\t\t\t<!--begin:Menu item-->
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"menu-item\">
 \t\t\t\t\t\t\t\t\t\t\t\t<!--begin:Menu link-->
-\t\t\t\t\t\t\t\t\t\t\t\t<a class=\"menu-link\" href=\"library\">
+\t\t\t\t\t\t\t\t\t\t\t\t<a class=\"menu-link\" href=\"/library\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"menu-bullet\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"bullet bullet-dot\"></span>
 \t\t\t\t\t\t\t\t\t\t\t\t\t</span>
@@ -2117,7 +2117,7 @@ class __TwigTemplate_e98dfcf2b77e0cf575da76bb334c97e7 extends Template
 \t\t\t\t\t\t\t\t\t\t\t<!--begin:Menu item-->
 \t\t\t\t\t\t\t\t\t\t\t<div class=\"menu-item\">
 \t\t\t\t\t\t\t\t\t\t\t\t<!--begin:Menu link-->
-\t\t\t\t\t\t\t\t\t\t\t\t<a class=\"menu-link\" href=\"library\">
+\t\t\t\t\t\t\t\t\t\t\t\t<a class=\"menu-link\" href=\"/library\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"menu-bullet\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"bullet bullet-dot\"></span>
 \t\t\t\t\t\t\t\t\t\t\t\t\t</span>

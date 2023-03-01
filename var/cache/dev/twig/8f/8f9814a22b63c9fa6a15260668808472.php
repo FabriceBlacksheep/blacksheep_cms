@@ -85,7 +85,7 @@ class __TwigTemplate_1ed48d5e103cf4dd0ff2cfe544576dcc extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "<div class=\"container bg-white mt-4 p-4\">
+        echo "<div class=\"container  mt-4 p-4\">
     <h4>Créer Campervan</h4>
         <a class=\"btn btn-secondary btn-sm\" href=\"";
         // line 8
@@ -136,7 +136,7 @@ class __TwigTemplate_1ed48d5e103cf4dd0ff2cfe544576dcc extends Template
 {% block title %}New Campervan{% endblock %}
 
 {% block body %}
-<div class=\"container bg-white mt-4 p-4\">
+<div class=\"container  mt-4 p-4\">
     <h4>Créer Campervan</h4>
         <a class=\"btn btn-secondary btn-sm\" href=\"{{ path('app_campervan_index') }}\">Retour</a>
 <div class=\"row g-3 align-items-center\">

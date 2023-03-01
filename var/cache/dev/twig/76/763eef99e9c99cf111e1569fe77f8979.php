@@ -85,7 +85,7 @@ class __TwigTemplate_a18b9ad5c579bbfe0168ba00560bb3ec extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "<div class=\"container bg-white mt-4 p-4\">
+        echo "<div class=\"container  mt-4 p-4\">
     <h4>Edition de l'Agence</h4>
     ";
         // line 9
@@ -223,7 +223,7 @@ if (fileUploaded !== \"/upload/\") {
 {% block title %}Edit Agence{% endblock %}
 
 {% block body %}
-<div class=\"container bg-white mt-4 p-4\">
+<div class=\"container  mt-4 p-4\">
     <h4>Edition de l'Agence</h4>
     {# {{agence.visuel}} #}
     {# btn back #}

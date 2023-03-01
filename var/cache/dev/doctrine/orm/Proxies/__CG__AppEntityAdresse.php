@@ -7,7 +7,7 @@ namespace Proxies\__CG__\App\Entity;
  */
 class Adresse extends \App\Entity\Adresse implements \Doctrine\Persistence\Proxy
 {
-    use \Symfony\Component\VarExporter\LazyGhostTrait {
+     use \Symfony\Component\VarExporter\LazyGhostTrait {
         initializeLazyObject as __load;
         setLazyObjectAsInitialized as public __setInitialized;
         isLazyObjectInitialized as private;
@@ -31,7 +31,7 @@ class Adresse extends \App\Entity\Adresse implements \Doctrine\Persistence\Proxy
         'number' => [parent::class, 'number', null],
         'street' => [parent::class, 'street', null],
         'zipcode' => [parent::class, 'zipcode', null],
-    ];
+    ];
 
     /**
      * @internal
