@@ -209,6 +209,19 @@ class AgenceController extends AbstractController
     }
 
 
+    //  api platform route return agence with langue in parameter (fr, de, nl)
+    #[Route('/{id}/{langue}', name: 'app_agence_langue', methods: ['GET'])]
+    public function langue(Agence $agence, $langue): Response
+    {
+        $agence = $agence->setLangue($langue);
+
+        return $this->json($agence, 200, [], ['groups' => 'agence:read']);
+
+    }
+
+
+
+
 
 
 

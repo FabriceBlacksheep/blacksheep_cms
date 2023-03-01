@@ -1,0 +1,55 @@
+.arkounay-ux-collection:not(.arkounay-ux-collection--no-highlight) .sortable-ghost > div {
+    border: 2px solid #86b7fe !important;
+}
+
+.arkounay-ux-collection .collection-up, .arkounay-ux-collection .collection-down {
+    color: #333333;
+}
+
+.arkounay-ux-collection .collection-remove:hover {
+    color: red;
+}
+
+.arkounay-ux-collection .collection-up:hover, .arkounay-ux-collection .collection-down:hover {
+    color: black;
+}
+
+.arkounay-ux-collection .collection-element-with-insert {
+    margin-bottom: 50px;
+}
+
+.arkounay-ux-collection .btn-collection-insert {
+    height: 36px;
+    position: absolute;
+    bottom: -44px;
+    right: 0;
+    display: flex;
+    align-items: center;
+}
+
+.collection-hide-delete .collection-content {
+    padding-top: 15px;
+}
+
+.arkounay-ux-horizontal-collection {
+    position: relative;
+    top: -15px;
+    margin-bottom: -15px;
+}
+
+[data-controller='arkounay--ux-collection--tabbed-collection'] .card {
+    padding-top: 15px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: -1px;
+}
+
+[data-controller='arkounay--ux-collection--tabbed-collection'] > .nav-tabs .nav-link.active {
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    [data-controller='arkounay--ux-collection--tabbed-collection'] > .nav-tabs .nav-link svg {
+        height: 32px;
+    }
+}

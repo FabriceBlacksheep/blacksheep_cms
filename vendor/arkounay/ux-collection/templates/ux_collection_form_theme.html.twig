@@ -1,0 +1,128 @@
+{% block ux_collection_row %}
+    {{ block('form_row') }}
+{% endblock %}
+
+{% block ux_collection_entry_row %}
+    {% apply spaceless %}
+        {% set allow_insert = form.parent.vars.allow_add and form.parent.vars.display_insert_button %}
+        <div {% if not row_attr.class|default(false) %}class="pt-0 {{ allow_insert ? 'collection-element-with-insert' : 'mb-3' }}"{% endif%} data-arkounay--ux-collection--collection-target="collectionElement" {% for k, v in row_attr|default %}{{ k }}="{{ v }}"{% endfor %}>
+            <div class="{{ form.parent.vars.entry_class|default }}">
+                <div class="btn-collection-container d-flex {{ 'ux_tabbed_collection' in form.parent.vars.block_prefixes ? 'btn-tabbed-collection-container' -}}">
+                    {% if form.parent.vars.display_sort_buttons|default(false) %}
+                        <button data-action="arkounay--ux-collection--collection#moveUp" data-arkounay--ux-collection--collection-target="up" class="collection-up btn btn-collection">
+                            {% if form.parent.vars.icon_up|default(false) %}
+                                {{ form.parent.vars.icon_up|raw }}
+                            {% else %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="18" y1="11" x2="12" y2="5" />
+                                    <line x1="6" y1="11" x2="12" y2="5" />
+                                </svg>
+                            {% endif %}
+                        </button>
+                        <button data-action="arkounay--ux-collection--collection#moveDown" data-arkounay--ux-collection--collection-target="down" class="collection-down btn btn-collection">
+                            {% if form.parent.vars.icon_down|default(false) %}
+                                {{ form.parent.vars.icon_down|raw }}
+                            {% else %}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <line x1="12" y1="5" x2="12" y2="19" />
+                                    <line x1="18" y1="13" x2="12" y2="19" />
+                                    <line x1="6" y1="13" x2="12" y2="19" />
+                                </svg>
+                            {% endif %}
+                        </button>
+                    {% endif %}
+                    <div class="w-100"></div>
+                    {% if form.parent.vars.allow_delete %}
+                        <button data-collection-id="{{ form.parent.vars.id }}" data-arkounay--ux-collection--collection-target="delete" data-action="arkounay--ux-collection--collection#remove" class="collection-remove btn btn-collection btn-collection-remove align-self-end">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
+                            </svg>
+                        </button>
+                    {% endif %}
+                </div>
+                <div class="{{ form.parent.vars.entry_element_class|default }}">
+                    {{ form_widget(form) }}
+                    {{ form_errors(form) }}
+                    {{ form_rest(form) }}
+                </div>
+                {% if allow_insert %}
+                    <button class="{{ form.parent.vars.insert_class }}" data-action="arkounay--ux-collection--collection#insert" data-arkounay--ux-collection--collection-target="insert">
+                        <svg class="me-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M12 5l0 14"></path>
+                            <path d="M5 12l14 0"></path>
+                        </svg>
+                        <span data-arkounay--ux-collection--collection-target="insertText" data-add-text="{{ (add_label|default('Add'))|trans }}" data-insert-text="{{ (insert_label|default('Insert'))|trans }}"></span>
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+    {% endapply %}
+{% endblock %}
+
+{% block ux_collection_widget %}
+    {% apply spaceless %}
+        {% if prototype is defined %}
+            {% set attr = attr|merge({'data-prototype': form_row(prototype)}) %}
+            {% set attr = attr|merge({'data-prototype-name': prototype.vars.name}) %}
+        {% endif %}
+        {% set attr = attr|merge({'data-allow-add': allow_add ? 1 : 0}) %}
+        {% set attr = attr|merge({'data-allow-remove': allow_delete ? 1 : 0 }) %}
+        {% set attr = attr|merge({'data-name-prefix': full_name}) %}
+        {% set attr = attr|merge({'class': attr.class|default('collection arkounay-ux-collection')}) %}
+        {% set attr = attr|merge({'data-controller': (attr['data-controller']|default('') ~ ' arkounay--ux-collection--collection')|trim}) %}
+        {% set attr = attr|merge({'data-arkounay--ux-collection--collection-allow-drag-and-drop-value': allow_drag_and_drop}) %}
+        {% if drag_and_drop_filter is not null %}
+            {% set attr = attr|merge({'data-arkounay--ux-collection--collection-drag-and-drop-filter-value': drag_and_drop_filter}) %}
+        {% endif %}
+        {% if drag_and_drop_prevent_on_filter is not null %}
+            {% set attr = attr|merge({'data-arkounay--ux-collection--collection-drag-and-drop-prevent-on-filter-value': drag_and_drop_prevent_on_filter|json_encode}) %}
+        {% endif %}
+        {% if position_selector|default(false) %}
+            {% set attr = attr|merge({'data-arkounay--ux-collection--collection-position-selector-value': position_selector}) %}
+        {% endif %}
+        {% set attr = attr|merge({'data-arkounay--ux-collection--collection-display-sort-buttons-value': display_sort_buttons|json_encode}) %}
+        {% set attr = attr|merge({'data-arkounay--ux-collection--collection-display-insert-button-value': display_insert_button|json_encode}) %}
+        {% set attr = attr|merge({'data-arkounay--ux-collection--collection-min-value': min}) %}
+        {% if max is not null %}
+            {% set attr = attr|merge({'data-arkounay--ux-collection--collection-max-value': max}) %}
+        {% endif %}
+
+        <div {{ block('widget_container_attributes') }}>
+            {%- if form is rootform -%}
+                {{ form_errors(form) }}
+            {%- endif -%}
+            {{- block('form_rows') -}}
+            {{- form_rest(form) -}}
+
+            {% if allow_add %}
+                <div class="collection-add-wrapper {{ add_wrapper_class }}" data-arkounay--ux-collection--collection-target="addWrapper">
+                    <button class="{{ add_class }}" data-collection-id="{{ id }}" data-arkounay--ux-collection--collection-target="add" data-action="arkounay--ux-collection--collection#add">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        {{ (add_label|default('Add'))|trans }}
+                    </button>
+                </div>
+            {% endif %}
+        </div>
+    {% endapply %}
+{% endblock %}
+
+{% block ux_tabbed_collection_row %}
+    {{ form_label(form, null, {required: false}) }}
+    <div data-controller="arkounay--ux-collection--tabbed-collection" data-arkounay--ux-collection--tabbed-collection-id-value="{{ id }}" data-arkounay--ux-collection--tabbed-collection-empty-tab-name-value="{{ empty_tab_name|trans }}" {% for k, v in row_attr|default %}{{ k }}="{{ v }}"{% endfor %}>
+        <ul class="nav nav-tabs" role="tablist" data-arkounay--ux-collection--tabbed-collection-target="tabs">
+        </ul>
+        {{ form_widget(form) }}
+    </div>
+    {{ form_help(form) }}
+    {{ form_errors(form) }}
+{% endblock %}
